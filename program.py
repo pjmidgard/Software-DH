@@ -263,7 +263,7 @@ class compression:
                                     	
                                     	Water=-1
                                     	Core=-1
-                                    	if Water==1 and Core=2400:
+                                    	if Water==1 and Core==2401:
                                     	    Water=100000
                                     	    Core=102400
                                     	    
@@ -400,7 +400,7 @@ class compression:
                                     block3=0
                                     sda3=""
                                     Water=1
-                                    Core=2400
+                                    Core=2401
 
                                     
                                     while block3<lenf2:
@@ -435,7 +435,7 @@ class compression:
                                     	Core=+1
                                     	if Water==100000 and Core=102400:
                                     	    Water=1
-                                    	    Core=2400
+                                    	    Core=2401
                                     	    
                                   
                                     	#print(e4)
