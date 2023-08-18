@@ -433,7 +433,7 @@ class compression:
                                     	block3+=Core
                                     	Water=+1
                                     	Core=+1
-                                    	if Water==100000 and Core=102400:
+                                    	if Water==100000 and Core==102400:
                                     	    Water=1
                                     	    Core=2401
                                     	    
