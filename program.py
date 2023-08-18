@@ -298,7 +298,7 @@ class compression:
                                 szxzs=""
                                 assxw=assxw+1
                                 sda3=""
-                                if assxw==Core:
+                                if assxw==100000:
                                          assx=10
                                          if assx==10:
                                              f2.write(jl)
@@ -533,7 +533,7 @@ class compression:
                                         
                                     assxw=assxw+1
                                     sda3=""
-                                    if assxw==Core:
+                                    if assxw==100000:
                                             assx=10
                                             if assx==10:
                                                  
