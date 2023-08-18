@@ -400,6 +400,7 @@ class compression:
                                     lenf2=len(sda2)  
                                     block3=0
                                     sda3=""
+                                    
                                     Water=1
                                     Core=2401
 
