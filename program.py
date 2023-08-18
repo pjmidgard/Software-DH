@@ -169,6 +169,7 @@ class compression:
 
                                     lenf3=len(sda2)
                                 lenf2=len(sda2)
+                                block3=0
                                 while block3<lenf2:
                                     	e4=sda2[block3:block3+4]
                                     	shake_reverse=0
