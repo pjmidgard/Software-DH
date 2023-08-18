@@ -195,14 +195,15 @@ class compression:
                                     	block3+=4
                                   
                                 block3=0
-                                sda3=""
+                                sda3="" 
+                                if assxw==0:
                                 
-                                Water=100000
-                                Core=102400
+                                    Water=100000
+                                    Core=102400
                                 
                                 while block3<lenf2:
 
-                                    	e4=sda2[block3:block3+Core]
+                                    	e4=sda2[block3:block3+102400]
 
                                     	shake_reverse=0
 
@@ -260,7 +261,7 @@ class compression:
 
                                     	sda3+=e3
 
-                                    	block3+=Core
+                                    	block3+=102400
                                     	
                                     	Water=-1
                                     	Core=-1
@@ -400,13 +401,13 @@ class compression:
                                     lenf2=len(sda2)  
                                     block3=0
                                     sda3=""
-                                    
-                                    Water=1
-                                    Core=2401
+                                    if assxw==0:
+                                        Water=1
+                                        Core=2401
 
                                     
                                     while block3<lenf2:
-                                    	e4=sda2[block3:block3+Core]
+                                    	e4=sda2[block3:block3+102400]
                                     	shake_reverse=0
                                     	e6=e4
                                     	
@@ -432,7 +433,7 @@ class compression:
     
                                     	
                                     	sda3+=e3
-                                    	block3+=Core
+                                    	block3+=102400
                                     	Water=+1
                                     	Core=+1
                                     	if Water==100000 and Core==102400:
