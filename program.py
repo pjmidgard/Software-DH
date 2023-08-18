@@ -270,9 +270,9 @@ class compression:
                                     	    
                                   
                                    
-                                sda2=sda3
-                                sda3=""
-                                block3
+                               
+                               
+                            
 
                                     	
                                     	
