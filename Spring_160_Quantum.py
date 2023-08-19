@@ -22,6 +22,9 @@ class compression:
                         i=2
                     Clear=""
                     name = input("What is name of file?")
+                    name=str(name)
+                    if i==2:
+                        key = input("Please,Enter key")
                     if os.path.exists(name):
                             print('Path is exists!')
                     else:
@@ -119,12 +122,12 @@ class compression:
                                     long_13=len(File_information5_2)
                                 long_12=len(File_information5_2)
                                 if i==1:
-                                    if long_17>=(2**26)-1 and i==1:
+                                    if long_17>=(2**256)-1 and i==1:
                                         print("print file is too big!")
                                         raise SystemExit
                                 if i==1:
                                     from qiskit.circuit import QuantumCircuit
-                                    circuit = QuantumCircuit(2**805306370)
+                                    circuit = QuantumCircuit((2**(805306370)*256))
                                     circuit1 = QuantumCircuit(44739244) 
                                     k1=-2
                                     k2=-1
@@ -172,10 +175,7 @@ class compression:
                                             SQUEAR_OF_ROOT=int(University_file[(X2*8)+24:(X2*8)+32],2)
                                             Multiply_Times=int(University_file[(X2*8)+32:(X2*8)+40],2)
                                             counts+=1
-                                            if SQUEAR_OF_ROOT>=68719476736:
-                                                SQUEAR_OF_ROOT=0
-                                            if Times_12>=2**26:
-                                                Times_12=1
+
                                             if Divide==0:
                                             	Divide=1
                                             if Times_12==0:
@@ -298,9 +298,10 @@ class compression:
                                                 M=str(name_2[:ML])
                                             else:
                                                 M=name_2[:10]
-                                            with open(M, "w") as f6:
+                                            print(M)
+                                            with open("1", "w") as f6:
                                                 f6.write(name)
-                                            with open(M, "ab") as f2:
+                                            with open("1", "ab") as f2:
                                                 f2.write(width_bits3)
                                             x2 = time()
                                             x3=x2-x
@@ -346,7 +347,7 @@ class compression:
                                                 long=int(File_information5[:Random_C],2)
                                                 File_information5=File_information5[Random_C:]                                                      
                                     from qiskit.circuit import QuantumCircuit
-                                    circuit = QuantumCircuit(2**805306370)
+                                    circuit = QuantumCircuit((2**(805306370)*256))
                                     circuit1 = QuantumCircuit(44739244) 
                                     k1=-2
                                     k2=-1
@@ -394,10 +395,7 @@ class compression:
                                             SQUEAR_OF_ROOT=int(University_file[(X2*8)+24:(X2*8)+32],2)
                                             Multiply_Times=int(University_file[(X2*8)+32:(X2*8)+40],2)
                                             counts+=1
-                                            if SQUEAR_OF_ROOT>=68719476736:
-                                                SQUEAR_OF_ROOT=0
-                                            if Times_12>=2**26:
-                                                Times_12=1
+
                                             if Divide==0:
                                             	Divide=1
                                             if Times_12==0:
@@ -496,9 +494,13 @@ class compression:
                                             else:
                                                 M1=name_3[:10]
                                             if M1!=str(name):
-                                                print("Cracked")
+                                                print("file_decrypted")
                                             else:
-                                                  print("Cracked")                                                                
+                                                print("file_decrypted")
+
+                                            if M1!=str(key):
+                                                print("Wrong key")
+                                                raise SystemExit
                                             with open(ascii_string, "wb") as f2:
                                                 f2.write(width_bits3)
                                             x2 = time()
