@@ -161,10 +161,7 @@ class compression:
                                             SQUEAR_OF_ROOT=int(University_file[(X2*8)+24:(X2*8)+32],2)
                                             Multiply_Times=int(University_file[(X2*8)+32:(X2*8)+40],2)
                                             counts+=1
-                                            if SQUEAR_OF_ROOT>=68719476736:
-                                                SQUEAR_OF_ROOT=0
-                                            if Times_12>=2**26:
-                                                Times_12=1
+
                                             if Divide==0:
                                             	Divide=1
                                             if Times_12==0:
@@ -370,10 +367,7 @@ class compression:
                                             SQUEAR_OF_ROOT=int(University_file[(X2*8)+24:(X2*8)+32],2)
                                             Multiply_Times=int(University_file[(X2*8)+32:(X2*8)+40],2)
                                             counts+=1
-                                            if SQUEAR_OF_ROOT>=68719476736:
-                                                SQUEAR_OF_ROOT=0
-                                            if Times_12>=2**26:
-                                                Times_12=1
+
                                             if Divide==0:
                                             	Divide=1
                                             if Times_12==0:
