@@ -84,7 +84,7 @@ class compression:
             
                   
                         
-                        if lenf1>(2**32)-1:
+                        if lenf1>(2**256)-1:
                             print("This file is too big");
                             raise SystemExit
 
