@@ -127,7 +127,7 @@ class compression:
                                         raise SystemExit
                                 if i==1:
                                     from qiskit.circuit import QuantumCircuit
-                                    circuit = QuantumCircuit((2**(805306370)*256))
+                                    circuit = QuantumCircuit((2**(256)*8)+2)
                                     circuit1 = QuantumCircuit(44739244) 
                                     k1=-2
                                     k2=-1
@@ -146,7 +146,7 @@ class compression:
                                     while Extract1!=1:
                                             k1+=1
                                             k2+=1
-                                            if k1==2**805306369:
+                                            if k1==2**(256*8):
                                                 k1=-1
                                                 k2=0
                                             circuit.cp(University, k1, k2)
@@ -347,7 +347,7 @@ class compression:
                                                 long=int(File_information5[:Random_C],2)
                                                 File_information5=File_information5[Random_C:]                                                      
                                     from qiskit.circuit import QuantumCircuit
-                                    circuit = QuantumCircuit((2**(805306370)*256))
+                                    circuit = QuantumCircuit((2**(256)*8)+2)
                                     circuit1 = QuantumCircuit(44739244) 
                                     k1=-2
                                     k2=-1
@@ -366,7 +366,7 @@ class compression:
                                     while Extract1!=1:
                                             k1+=1
                                             k2+=1
-                                            if k1==2**805306369:
+                                            if k1==2**(256*8):
                                                 k1=-1
                                                 k2=0
                                             circuit.cp(University, k1, k2)
