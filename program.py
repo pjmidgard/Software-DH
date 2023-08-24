@@ -20,7 +20,7 @@ class compression:
                    
                     blockw=5
                     blockw1=4
-                    T=100001
+                 
                     assxw=0
                     name_cut=""
                     name_cut=len(".bin")
@@ -172,13 +172,13 @@ class compression:
                                 lenf2=len(sda2)
                                 block3=0
                                 while block3<lenf2:
-                                    	e4=sda2[block3:block3+4+T]
+                                    	e4=sda2[block3:block3+4]
                                     	shake_reverse=0
                                     	e6=e4
                                     	
                                     	d2=int(e6,2)
                                     	d3=d2
-                                    	e4=e4[2+T:4+T]+e4[0:2+T]
+                                    	e4=e4[2:4]+e4[0:2]
                                     	
              
 		                                            
@@ -193,7 +193,7 @@ class compression:
     
                                     	
                                     	sda3+=e3
-                                    	block3+=4+T
+                                    	block3+=4
                                   
                                 block3=0
                                 sda3="" 
@@ -299,7 +299,7 @@ class compression:
                                 szxzzza=""
                                 szxzs=""
                                 assxw=assxw+1
-                                T=T-1
+                             
                                 sda3=""
                                 if assxw==100000:
                                          assx=10
@@ -451,7 +451,7 @@ class compression:
                                     	
                                     while block3<lenf2:
 
-                                    	e4=sda2[block3:block3+4+T]
+                                    	e4=sda2[block3:block3+4]
 
                                     	shake_reverse=0
 
@@ -465,7 +465,7 @@ class compression:
 
                                     	
 
-                                    	e4=e4[2+T:4+T]+e4[0:2+T]
+                                    	e4=e4[2:4]+e4[0:2]
 
 	                                    	
 
@@ -496,7 +496,7 @@ class compression:
 
                                     	sda3+=e3
 
-                                    	block3+=4+T
+                                    	block3+=4
                                      
                                     	
                                        	
@@ -537,7 +537,8 @@ class compression:
 
                                         
                                     assxw=assxw+1
-                                    T=T+1
+                                    
+                                    
                                     sda3=""
                                     if assxw==100000:
                                             assx=10
