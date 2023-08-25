@@ -532,7 +532,7 @@ class compression:
                                                  
                                                          	
                                                 
-                                                n = int(sda,2, 2)
+                                                n = int(sda2, 2)
                                                 
                                                 qqwslenf=len(sda2)
                                                 qqwslenf=(qqwslenf/8)*2
