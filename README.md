@@ -1,11 +1,10 @@
 # Software-DH
 ...
 c:
-1.: program.py
-2.: Spring
+Spring
 e:
-1.: Spring
-2.: program.py
+Spring
+
 
 I created this program.
 
