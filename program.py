@@ -287,14 +287,7 @@ class compression:
                                 
                                                      		 
                                 sda2=sda3
-                                n = int(sda3, 2)
-                                qqwslenf=len(sda3)
-                                qqwslenf=(qqwslenf/8)*2
-                                qqwslenf=str(qqwslenf)
-                                qqwslenf="%0"+qqwslenf+"x"
-                                jl=binascii.unhexlify(qqwslenf % n)
-                                sssssw=len(jl)
-                                data=jl
+
                                 qqqwz=qqqwz+1
                                 szxzzza=""
                                 szxzs=""
@@ -304,10 +297,19 @@ class compression:
                                 if assxw==100000:
                                          assx=10
                                          if assx==10:
-                                             f2.write(jl)
-                                             x2 = time()
-                                             x3=x2-x
-                                             return print(x3)
+                                             
+                                                n = int(sda2, 2)
+                                                qqwslenf=len(sda2)
+                                                qqwslenf=(qqwslenf/8)*2
+                                                qqwslenf=str(qqwslenf)
+                                                qqwslenf="%0"+qqwslenf+"x"
+                                                jl=binascii.unhexlify(qqwslenf % n)
+                                                sssssw=len(jl)
+                                                data=jl
+                                                f2.write(jl)
+                                                x2 = time()
+                                                x3=x2-x
+                                                return print(x3)
                 
 
                            
@@ -508,22 +510,6 @@ class compression:
                                     	
 
                                               
-                                                         	
-                                    sda2=sda3 
-                                    n = int(sda3, 2)
-                                    
-                                    qqwslenf=len(sda3)
-                                    qqwslenf=(qqwslenf/8)*2
-                                    qqwslenf=str(qqwslenf)
-                                    qqwslenf="%0"+qqwslenf+"x"
-                                 
-                                    jl=binascii.unhexlify(qqwslenf % n)
-                                    
-       
-
-                  
-                                    sssssw=len(jl)
-                                    data=jl
                                     qqqwz=qqqwz+1
                                     szxzzza=""
                                     szxzs=""
@@ -538,20 +524,32 @@ class compression:
                                         
                                     assxw=assxw+1
                                     
-                                    
+                                    sda2=sda3 
                                     sda3=""
                                     if assxw==100000:
                                             assx=10
                                             if assx==10:
                                                  
-
-
-   											
-                                               
-                                               f2.write(jl)
-                                               x2 = time()
-                                               x3=x2-x
-                                               return print(x3)        
+                                                         	
+                                                
+                                                n = int(sda,2, 2)
+                                                
+                                                qqwslenf=len(sda2)
+                                                qqwslenf=(qqwslenf/8)*2
+                                                qqwslenf=str(qqwslenf)
+                                                qqwslenf="%0"+qqwslenf+"x"
+                                             
+                                                jl=binascii.unhexlify(qqwslenf % n)
+                                                
+                   
+            
+                              
+                                                sssssw=len(jl)
+                                                data=jl
+                                                f2.write(jl)
+                                                x2 = time()
+                                                x3=x2-x
+                                                return print(x3)        
                                                                                      														    
                                          
 
