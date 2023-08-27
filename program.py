@@ -169,16 +169,71 @@ class compression:
                                     sda2=sda
 
                                     lenf3=len(sda2)
-                                lenf2=len(sda2)
-                                block3=0
-                                while block3<lenf2:
-                                    	e4=sda2[block3:block3+8]
+                                    lenf2=len(sda2)  
+                                    block3=0
+                                    sda3=""
+                                    
+                                    Water=100000
+                                    Core=102400
+                             
+                                    
+                                    while block3<lenf2:
+                                    	e4=sda2[block3:block3+102400]
                                     	shake_reverse=0
                                     	e6=e4
                                     	
                                     	d2=int(e6,2)
                                     	d3=d2
+                                    	
+                                    	if len(e4)==Core:
+	                                    	
+		                                  
+		                                    
+		                                    	
+		                                            d2=d2-(2**Water)
+		                                            if d2<=-1:
+		                                            	d2=d2+(2**(Core*8))
+		                                     
+                                                                      	
+                                        		
+                                        	
+                                    	long_size=len(e4)
+                                    	C="0"+str(long_size)+"b"
+                                    	e3=format(d2,C)
+                                    	#print(e3)
+    
+                                    	
+                                    	sda3+=e3
+                                    	block3+=102400
+                                    	Water=+1
+                                    	Core=+1
+                                    	if Water==100000 and Core==102400:
+                                    	    Water=1
+                                    	    Core=2401
+                                    	    
+                                  
+                                    	#print(e4)
+                                    sda2=sda3
+                                    sda3=""
+                                    block3=0
+                                    	
+                                    while block3<lenf2:
 
+                                    	e4=sda2[block3:block3+8]
+
+                                    	shake_reverse=0
+
+                                    	e6=e4
+
+                                    	
+
+                                    	d2=int(e6,2)
+
+                                    	d3=d2
+                                    	
+                                    	
+                                    	
+                                    	e4=e4[4:8]+e4[0:4]
 
                                     	
 
@@ -186,47 +241,8 @@ class compression:
                                     	    e4="00000000"
                                     	elif e4=="00000000":
                                     	    e4="01100011"
-                                    
-                                             	
-             
-                                    	e4=e4[4:8]+e4[0:4]		                                            
-		                                     
-                                                                      	
-                                        		
-                                        	
-                                    	long_size=len(e4)
-                                    	C="0"+str(long_size)+"b"
-                                    	e3=e4
-                                    	#print(e3)
-    
-                                    	
-                                    	sda3+=e3
-                                    	block3+=8
-                                  
-                                block3=0
-                                sda3="" 
-                               
-                                
-                                Water=100000
-                                Core=102400
-                                
-                                while block3<lenf2:
 
-                                    	e4=sda2[block3:block3+102400]
-
-                                    	shake_reverse=0
-
-                                    	e6=e4
-
-                                    	
-
-                                    	d2=int(e6,2)
-
-                                    	d3=d2
-
-                                    	
-
-                                    	if len(e4)==Core:
+                                                                         
 
 	                                    	
 
@@ -234,19 +250,6 @@ class compression:
 
 		                                    
 
-		                                    	
-
-		                                            
-
-		                                            if d2>=((2**(Core*8))-(2**Water)):
-
-		                                            	d2=d2-(2**(Water*8))
-
-		                                            d2=d2+(2**Core)
-
-		                                            
-
-		                                            
 
 		                                     
 
@@ -260,7 +263,7 @@ class compression:
 
                                     	C="0"+str(long_size)+"b"
 
-                                    	e3=format(d2,C)
+                                    	e3=e4
 
                                     	#print(e3)
 
@@ -270,54 +273,58 @@ class compression:
 
                                     	sda3+=e3
 
-                                    	block3+=102400
+                                    	block3+=8
+                                     
                                     	
-                                    	Water=-1
-                                    	Core=-1
-                                    	if Water==1 and Core==2401:
-                                    	    Water=100000
-                                    	    Core=102400
-                                    	    
+                                       	
+	                                     	
+	                                    
+                                    	
+
+
+                                    	
+
+                                              
+                                    qqqwz=qqqwz+1
+                                    szxzzza=""
+                                    szxzs=""
+                                 
                                   
-                                   
-                               
-                               
-                            
+                              
+                                 
+                                        
+                                        
+                                        
 
-                                    	
-                                    	
-                                    	
-                                    	
-                                    	
-                               
-                                       
-                               
-                                
-                                                     		 
-                                sda2=sda3
-
-                                qqqwz=qqqwz+1
-                                szxzzza=""
-                                szxzs=""
-                                assxw=assxw+1
-                             
-                                sda3=""
-                                if assxw==1:
-                                         assx=10
-                                         if assx==10:
-                                             
+                                        
+                                    assxw=assxw+1
+                                    
+                                    sda2=sda3 
+                                    sda3=""
+                                    if assxw==1:
+                                            assx=10
+                                            if assx==10:
+                                                 
+                                                         	
+                                                
                                                 n = int(sda2, 2)
+                                                
                                                 qqwslenf=len(sda2)
                                                 qqwslenf=(qqwslenf/8)*2
                                                 qqwslenf=str(qqwslenf)
                                                 qqwslenf="%0"+qqwslenf+"x"
+                                             
                                                 jl=binascii.unhexlify(qqwslenf % n)
+                                                
+                   
+            
+                              
                                                 sssssw=len(jl)
                                                 data=jl
                                                 f2.write(jl)
                                                 x2 = time()
                                                 x3=x2-x
-                                                return print(x3)
+                                                return print(x3)        
                 
 
                            
