@@ -136,7 +136,6 @@ class compression:
                                 lenf2=len(sda2)
                                 c=1
 
-
                                 if c==1:
 
                            
@@ -236,28 +235,12 @@ class compression:
                                        
 
                                     if cvf1==1:
-                                                    
-                                    
-                                    
-                                        block=0
-
-
-                                        while block<lenf2:
-                                                        
-                                            e4=sda4[block:block+8]
-                                            if e4=="10110001":
-                                                e4="00000000"
-                                            elif e4=="00000000":
-                                                e4="10110001"
-                                        
-                                                
-                                            sda5+=e4
-                                            block+=8
+                                                   
                                         
                                         
-                                        n = int(sda5, 2)
+                                        n = int(sda4, 2)
                                         
-                                        qqwslenf=len(sda5)
+                                        qqwslenf=len(sda4)
                                         qqwslenf=(qqwslenf/8)*2
                                         qqwslenf=str(qqwslenf)
                                         qqwslenf="%0"+qqwslenf+"x"
@@ -403,9 +386,7 @@ class compression:
 
                                     lenf3=len(sda2)
                                 lenf2=len(sda2)
-
                                 c=1
-
 
                                 if c==1:
 
@@ -509,25 +490,15 @@ class compression:
                                                     
                                     
                                     
-                                        block=0
+                                      
 
 
-                                        while block<lenf2:
-                                                        
-                                            e4=sda4[block:block+8]
-                                            if e4=="10110001":
-                                                e4="00000000"
-                                            elif e4=="00000000":
-                                                e4="10110001"
+
+                                  
                                         
-                                                
-                                            sda5+=e4
-                                            block+=8
+                                        n = int(sda4, 2)
                                         
-                                        
-                                        n = int(sda5, 2)
-                                        
-                                        qqwslenf=len(sda5)
+                                        qqwslenf=len(sda4)
                                         qqwslenf=(qqwslenf/8)*2
                                         qqwslenf=str(qqwslenf)
                                         qqwslenf="%0"+qqwslenf+"x"
