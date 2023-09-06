@@ -17,6 +17,10 @@ class compression:
                     namem=""
                     namema="?"
 
+                    sda3=""
+                    sda4=""
+                    sda5=""
+
                    
                  
                     assxw=0
@@ -129,127 +133,151 @@ class compression:
                                     sda2=sda
 
                                     lenf3=len(sda2)
-                                lenf2=len(sda2)  
-                                                
-                                e4=sda2[e2:e3]
-                                
-                                block=block+1
+                                lenf2=len(sda2)
+                                c=1
 
-                                corridors=corridors+1%2**20
-                                if corridors==cor:
-                                    cor=2
-                                
-                                if corridors==cor:
-                                    cor=4
-                                    
-                                if corridors==cor:
-                                    cor=3
-                                    
-                                if corridors==cor:
-                                    cor=1
 
-                                      
-                                if block<=cor:
-                                    if e4=="0":
-                                        sda3=sda3+"0"
-                                        e4="0"
-                                        block=3
-                                        e4=""
+                                if c==1:
+
+                           
+                                    
+
+                                    e4=sda2[e2:e3]
+                                    
+                                    block=block+1
+
+                                    corridors=corridors+1%2**20
+                                    if corridors==cor:
+                                        cor=2
+                                    
+                                    if corridors==cor:
+                                        cor=4
                                         
-                                    if e4=="1":
-                                        sda3=sda3+"1"
-                                        e4="1"
-                                        block=3
-                                        e4=""
+                                    if corridors==cor:
+                                        cor=3
+                                        
+                                    if corridors==cor:
+                                        cor=1
+
                                           
-                                if block==4:
-                                    if e4=="1":
-                                        sda3=sda3+"0"
-                                        e4="0"
-                                        block=0
-                                        e4=""
-                                             
-                                    if e4=="0":
-                                        sda3=sda3+"1"
-                                        e4="1"
-                                        block=0
-                                        e4=""
-                                        
-                                if block<=cor:
-                                    if e4=="0":
-                                        sda3=sda3+"1"
-                                        e4="1"
-                                        block=3
-                                        e4=""
-                                        
-                                    if e4=="1":
-                                        sda3=sda3+"0"
-                                        e4="0"
-                                        block=3
-                                        e4=""
-                                                          
-                                if block==4:
-                                    if e4=="1":
-                                        sda3=sda3+"0"
-                                        e4="0"
-                                        block=0
-                                        e4=""
-                                        
+                                    if block<=cor:
+                                        if e4=="0":
+                                            sda4=sda4+"0"
+                                            e4="0"
+                                            block=3
+                                            e4=""
                                             
-                                if e4=="0":
-                                        sda3=sda3+"1"
-                                        e4="1"
-                                        block=0
-                                        e4=""     
+                                        if e4=="1":
+                                            sda4=sda4+"1"
+                                            e4="1"
+                                            block=3
+                                            e4=""
+                                              
+                                    if block==4:
+                                        if e4=="1":
+                                            sda4=sda4+"0"
+                                            e4="0"
+                                            block=0
+                                            e4=""
+                                                 
+                                        if e4=="0":
+                                            sda4=sda4+"1"
+                                            e4="1"
+                                            block=0
+                                            e4=""
+                                            
+                                    if block<=cor:
+                                        if e4=="0":
+                                            sda4=sda4+"1"
+                                            e4="1"
+                                            block=3
+                                            e4=""
+                                            
+                                        if e4=="1":
+                                            sda4=sda4+"0"
+                                            e4="0"
+                                            block=3
+                                            e4=""
+                                                              
+                                    if block==4:
+                                        if e4=="1":
+                                            sda4=sda4+"0"
+                                            e4="0"
+                                            block=0
+                                            e4=""
+                                            
+                                                
+                                    if e4=="0":
+                                            sda4=sda4+"1"
+                                            e4="1"
+                                            block=0
+                                            e4=""     
+                                            
+                                    e2=e2+1
+                                    e3=e3+1
+
+                                    e4=""
+                              
+                                    if e3==cvf:
+                                        e2=0
+                                        e3=1
                                         
-                                e2=e2+1
-                                e3=e3+1
+                                        cvf=cvf+1
 
-                                e4=""
-                          
-                                if e3==cvf:
-                                    e2=0
-                                    e3=1
+                                        cvf=sw
+                                        sw=sw+1
+                                 
+                                    if cvf==lenf5*8+4:
+                                        sw=sw+2
+                                        cvf=c
+                                        cvf1=cvf1+1
+                                         
+                                        c=c+2
+                                       
+
+                                    if cvf1==1:
+                                                    
                                     
-                                    cvf=cvf+1
+                                    
+                                        block=0
 
-                                    cvf=sw
-                                    sw=sw+1
-                             
-                                if cvf==lenf5*8+4:
-                                    sw=sw+2
-                                    cvf=c
-                                    cvf1=cvf1+1
+
+                                        while block<lenf2:
+                                                        
+                                            e4=sda4[block:block+8]
+                                            if e4=="10110001":
+                                                e4="00000000"
+                                            elif e4=="00000000":
+                                                e4="10110001"
+                                        
+                                                
+                                            sda5+=e4
+                                            block+=8
+                                        
+                                        
+                                        n = int(sda5, 2)
+                                        
+                                        qqwslenf=len(sda5)
+                                        qqwslenf=(qqwslenf/8)*2
+                                        qqwslenf=str(qqwslenf)
+                                        qqwslenf="%0"+qqwslenf+"x"
                                      
-                                    c=c+2
-                                   
-
-                                if cvf1==1:
-                                   
-                                    n = int(sda3, 2)
-                                
-                                    qqwslenf=len(sda3)
-                                    qqwslenf=(qqwslenf/8)*2
-                                    qqwslenf=str(qqwslenf)
-                                    qqwslenf="%0"+qqwslenf+"x"
-                             
-                                    jl=binascii.unhexlify(qqwslenf % n)
-                                    sssssw=len(jl)
-                                    data=jl
-                                    qqqwz=qqqwz+1
-                                    szxzzza=""
-                                    szxzs=""
-                            
-                                    assxw=assxw+1
-                                    if assxw==1:
-                                        assx=10
-                                        if assx==10:
-                                        	
-                                            f2.write(jl)
-                                            x2 = time()
-                                            x3=x2-x
-                                            return print(x3)
-           
+                                        jl=binascii.unhexlify(qqwslenf % n)
+                                        sssssw=len(jl)
+                                        data=jl
+                                        qqqwz=qqqwz+1
+                                        szxzzza=""
+                                        szxzs=""
+                                    
+                                        assxw=assxw+1
+                                        if assxw==1:
+                                                assx=10
+                                                if assx==10:
+                                                   
+                                                    f2.write(jl)
+                                                    x2 = time()
+                                                    x3=x2-x
+                                                    return print(x3)
     def cryptograpy_unpack(self):                      
                  if namez=="e":
                     corridors=0
@@ -259,6 +287,11 @@ class compression:
                     namea="file.Secret"
                     namem=""
                     namema="?"
+
+                    sda3=""
+                    sda4=""
+                    sda5=""
+
                  
                     assxw=0
                     blockw=5
@@ -369,127 +402,177 @@ class compression:
                                     sda2=sda
 
                                     lenf3=len(sda2)
-                                lenf2=len(sda2)  
-                                                
-                                e4=sda2[e2:e3]
-                                
-                                block=block+1
+                                lenf2=len(sda2)
 
-                                corridors=corridors+1%2**20
+                                c=1
 
-                                if corridors==cor:
-                                    cor=2
-                                
-                                if corridors==cor:
-                                    cor=4
+
+                                if c==1:
+
+                           
                                     
-                                if corridors==cor:
-                                    cor=3
-                                    
-                                if corridors==cor:
-                                    cor=1
 
-                                      
-                                if block<=cor:
-                                    if e4=="0":
-                                        sda3=sda3+"0"
-                                        e4="0"
-                                        block=3
-                                        e4=""
+                                    e4=sda2[e2:e3]
+                                    
+                                    block=block+1
+
+                                    corridors=corridors+1%2**20
+                                    if corridors==cor:
+                                        cor=2
+                                    
+                                    if corridors==cor:
+                                        cor=4
                                         
-                                    if e4=="1":
-                                        sda3=sda3+"1"
-                                        e4="1"
-                                        block=3
-                                        e4=""
+                                    if corridors==cor:
+                                        cor=3
+                                        
+                                    if corridors==cor:
+                                        cor=1
+
                                           
-                                if block==4:
-                                    if e4=="1":
-                                        sda3=sda3+"0"
-                                        e4="0"
-                                        block=0
-                                        e4=""
-                                             
-                                    if e4=="0":
-                                        sda3=sda3+"1"
-                                        e4="1"
-                                        block=0
-                                        e4=""
-                                        
-                                if block<=cor:
-                                    if e4=="0":
-                                        sda3=sda3+"1"
-                                        e4="1"
-                                        block=3
-                                        e4=""
-                                        
-                                    if e4=="1":
-                                        sda3=sda3+"0"
-                                        e4="0"
-                                        block=3
-                                        e4=""
-                                                          
-                                if block==4:
-                                    if e4=="1":
-                                        sda3=sda3+"0"
-                                        e4="0"
-                                        block=0
-                                        e4=""
-                                        
+                                    if block<=cor:
+                                        if e4=="0":
+                                            sda4=sda4+"0"
+                                            e4="0"
+                                            block=3
+                                            e4=""
                                             
-                                if e4=="0":
-                                        sda3=sda3+"1"
-                                        e4="1"
-                                        block=0
-                                        e4=""     
+                                        if e4=="1":
+                                            sda4=sda4+"1"
+                                            e4="1"
+                                            block=3
+                                            e4=""
+                                              
+                                    if block==4:
+                                        if e4=="1":
+                                            sda4=sda4+"0"
+                                            e4="0"
+                                            block=0
+                                            e4=""
+                                                 
+                                        if e4=="0":
+                                            sda4=sda4+"1"
+                                            e4="1"
+                                            block=0
+                                            e4=""
+                                            
+                                    if block<=cor:
+                                        if e4=="0":
+                                            sda4=sda4+"1"
+                                            e4="1"
+                                            block=3
+                                            e4=""
+                                            
+                                        if e4=="1":
+                                            sda4=sda4+"0"
+                                            e4="0"
+                                            block=3
+                                            e4=""
+                                                              
+                                    if block==4:
+                                        if e4=="1":
+                                            sda4=sda4+"0"
+                                            e4="0"
+                                            block=0
+                                            e4=""
+                                            
+                                                
+                                    if e4=="0":
+                                            sda4=sda4+"1"
+                                            e4="1"
+                                            block=0
+                                            e4=""     
+                                            
+                                    e2=e2+1
+                                    e3=e3+1
+
+                                    e4=""
+                              
+                                    if e3==cvf:
+                                        e2=0
+                                        e3=1
                                         
-                                e2=e2+1
-                                e3=e3+1
+                                        cvf=cvf+1
 
-                                e4=""
-                          
-                                if e3==cvf:
-                                    e2=0
-                                    e3=1
+                                        cvf=sw
+                                        sw=sw+1
+                                 
+                                    if cvf==lenf5*8+4:
+                                        sw=sw+2
+                                        cvf=c
+                                        cvf1=cvf1+1
+                                         
+                                        c=c+2
+                                       
+
+                                    if cvf1==1:
+                                                    
                                     
-                                    cvf=cvf+1
+                                    
+                                        block=0
 
-                                    cvf=sw
-                                    sw=sw+1
-                             
-                                if cvf==lenf5*8+4:
-                                    sw=sw+2
-                                    cvf=c
-                                    cvf1=cvf1+1
+
+                                        while block<lenf2:
+                                                        
+                                            e4=sda4[block:block+8]
+                                            if e4=="10110001":
+                                                e4="00000000"
+                                            elif e4=="00000000":
+                                                e4="10110001"
+                                        
+                                                
+                                            sda5+=e4
+                                            block+=8
+                                        
+                                        
+                                        n = int(sda5, 2)
+                                        
+                                        qqwslenf=len(sda5)
+                                        qqwslenf=(qqwslenf/8)*2
+                                        qqwslenf=str(qqwslenf)
+                                        qqwslenf="%0"+qqwslenf+"x"
                                      
-                                    c=c+2
-                                   
-
-                                if cvf1==1:
+                                        jl=binascii.unhexlify(qqwslenf % n)
+                                        sssssw=len(jl)
+                                        data=jl
+                                        qqqwz=qqqwz+1
+                                        szxzzza=""
+                                        szxzs=""
                                     
-                                    n = int(sda3, 2)
-                                
-                                    qqwslenf=len(sda3)
-                                    qqwslenf=(qqwslenf/8)*2
-                                    qqwslenf=str(qqwslenf)
-                                    qqwslenf="%0"+qqwslenf+"x"
-                             
-                                    jl=binascii.unhexlify(qqwslenf % n)
-                                    sssssw=len(jl)
-                                    data=jl
-                                    qqqwz=qqqwz+1
-                                    szxzzza=""
-                                    szxzs=""
-                            
-                                    assxw=assxw+1
-                                    if assxw==1:
-                                        assx=10
-                                        if assx==10:
-                                           
-                                            f2.write(jl)
-                                            x2 = time()
-                                            x3=x2-x
-                                            return print(x3)
+                                        assxw=assxw+1
+                                        if assxw==1:
+                                                assx=10
+                                                if assx==10:
+                                                   
+                                                    f2.write(jl)
+                                                    x2 = time()
+                                                    x3=x2-x
+                                                    return print(x3)
+                                        
+                                        
+                                        n = int(sda5, 2)
+                                        
+                                        qqwslenf=len(sda5)
+                                        qqwslenf=(qqwslenf/8)*2
+                                        qqwslenf=str(qqwslenf)
+                                        qqwslenf="%0"+qqwslenf+"x"
+                                     
+                                        jl=binascii.unhexlify(qqwslenf % n)
+                                        sssssw=len(jl)
+                                        data=jl
+                                        qqqwz=qqqwz+1
+                                        szxzzza=""
+                                        szxzs=""
+                                    
+                                        assxw=assxw+1
+                                        if assxw==1:
+                                                assx=10
+                                                if assx==10:
+                                                   
+                                                    f2.write(jl)
+                                                    x2 = time()
+                                                    x3=x2-x
+                                                    return print(x3)
                  
 
                                 
