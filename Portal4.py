@@ -382,7 +382,7 @@ class compression:
                                     cvf1=cvf1+1
                                     sda2=sda4
                                     sda4=""
-                                    if cvf1==50:
+                                    if cvf1==25:
                                                    
                                         
                                         
