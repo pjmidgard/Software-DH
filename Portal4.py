@@ -404,8 +404,7 @@ class compression:
                                         if assxw==1:
                                                 assx=10
                                                 if assx==10:
-                                                    import paq
-                                                    jl=paq.decompress(jl)
+                                                
                                                     f2.write(jl)
                                                     x2 = time()
                                                     x3=x2-x
