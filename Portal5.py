@@ -19,7 +19,7 @@ class compression:
                     namema="?"
 
                     e5=0
-                    e6=100
+                    e6=0
                     e7=255
 
                     sda3=""
@@ -169,43 +169,18 @@ class compression:
                                             sda3=format(e5,"08b")
                                         sda4+=sda3
                                             
-                                        block+=8
-                                    sda2=sda4
-                                    sda4=""
-                                    e6=0
-                                    e7=15
-                                    block=0
-                                    while block<lenf2:
-
-                           
+                                        block+=8                                    
                                     
-
-                                        e4=sda2[block:block+4]
-                                        
-                                        e5=int(e4,2)
-                                        if e5==e6:
-
-                                            
-                                            sda3=format(e7,"04b")
-                                        elif e5==e7:
-                                           
-                                            sda3=format(e6,"04b")
-
-                                        else:
-                                            
-                                            sda3=format(e5,"04b")
-                                        sda4+=sda3
-                                            
-                                        block+=4
                                     e6+=1
                                     e7-=1
+                                    if e6==255:
+                                        e6=0
+                                    if e7==0:
+                                        e7=255
                                     cvf1=cvf1+1
                                     sda2=sda4
                                     sda4=""
-                                   
-                                    
-                                  
-                                    if cvf1==14:
+                                    if cvf1==9999:
                                                     
                                     
                                     
@@ -255,7 +230,7 @@ class compression:
                     namema="?"
 
                     e5=0
-                    e6=100
+                    e6=0
                     e7=255
 
                     sda3=""
@@ -401,44 +376,18 @@ class compression:
                                             sda3=format(e5,"08b")
                                         sda4+=sda3
                                             
-                                        block+=8
-                                    sda2=sda4
-                                    sda4=""
-                                    e6=0
-                                    e7=15
-                                    block=0
-                                    while block<lenf2:
-
-                           
+                                        block+=8                                    
                                     
-
-                                        e4=sda2[block:block+4]
-                                        
-                                        e5=int(e4,2)
-                                        if e5==e6:
-
-                                            
-                                            sda3=format(e7,"04b")
-                                        elif e5==e7:
-                                           
-                                            sda3=format(e6,"04b")
-
-                                        else:
-                                            
-                                            sda3=format(e5,"04b")
-                                        sda4+=sda3
-                                            
-                                        block+=4
                                     e6+=1
                                     e7-=1
+                                    if e6==255:
+                                        e6=0
+                                    if e7==0:
+                                        e7=255
                                     cvf1=cvf1+1
                                     sda2=sda4
                                     sda4=""
-                                   
-                                    
-                                  
-                                    if cvf1==14:
-                                                    
+                                    if cvf1==9999:
                                                    
                                         
                                         
