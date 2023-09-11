@@ -2,7 +2,7 @@
 
 c:
 
-1.: Portal-9
+1.: Portal-1, Portal-8 and Portal-9
 
 2.: Spring
 
@@ -10,7 +10,7 @@ e:
 
 1.: Spring
 
-2.: Portal-9
+2.: Portal-9, Portal-8 and Portal-1
 
 
 Spring 160 can compress 1.15792089 × 10^68 gigabytes file
