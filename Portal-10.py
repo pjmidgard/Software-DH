@@ -19,7 +19,6 @@ class compression:
                     namema="?"
 
                     e5=0
-                    e1=""
                     e6=0
                     e7=255
 
@@ -155,17 +154,8 @@ class compression:
                                     
 
                                         e4=sda2[block:block+8]
-                                        e1=e4
-                                        remaider=cvf1%2
-                                        if remaider==0 and cvf1>10112:
-                                       
-                                            e1=e4[4:8]+e4[2:4]+e4[0:2]
-                                            
-                                              
-                                              
-                                              
                                         
-                                        e5=int(e1,2)
+                                        e5=int(e4,2)
                                         if e5==e6:
 
                                             
@@ -189,11 +179,8 @@ class compression:
                                         e7=255
                                     cvf1=cvf1+1
                                     sda2=sda4
-                                   
-                                   
-                                    
                                     sda4=""
-                                    if cvf1==10135:
+                                    if cvf1==25:
                                                     
                                     
                                     
@@ -241,7 +228,6 @@ class compression:
                     namea="file.Secret"
                     namem=""
                     namema="?"
-                    e1=""
 
                     e5=0
                     e6=0
@@ -250,7 +236,6 @@ class compression:
                     sda3=""
                     sda4=""
                     sda5=""
-                    sda8=""
 
                  
                     assxw=0
@@ -376,13 +361,8 @@ class compression:
                                     
 
                                         e4=sda2[block:block+8]
-                                        e1=e4
-                                        remaider=cvf1%2
-                                        if remaider==0 and cvf1>10112:
                                         
-                                            e1=e4[4:8]+e4[2:4]+e4[0:2]
-                                        
-                                        e5=int(e1,2)
+                                        e5=int(e4,2)
                                         if e5==e6:
 
                                             
@@ -394,11 +374,6 @@ class compression:
                                         else:
                                             
                                             sda3=format(e5,"08b")
-                                        
-
-                                        
-                                    
-                                        
                                         sda4+=sda3
                                             
                                         block+=8                                    
@@ -412,16 +387,7 @@ class compression:
                                     cvf1=cvf1+1
                                     sda2=sda4
                                     sda4=""
-                                    n = int(sda2, 2)
-                                        
-                                    qqwslenf=len(sda2)
-                                    qqwslenf=(qqwslenf/8)*2
-                                    qqwslenf=str(qqwslenf)
-                                    qqwslenf="%0"+qqwslenf+"x"
-                                     
-                                    jl=binascii.unhexlify(qqwslenf % n)
-                                 
-                                    if cvf1==10135:
+                                    if cvf1==25:
                                                    
                                         
                                         

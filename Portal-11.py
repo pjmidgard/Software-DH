@@ -157,8 +157,7 @@ class compression:
                                         e4=sda2[block:block+8]
                                         e1=e4
                                         remaider=cvf1%2
-                                        if remaider==0 and cvf1>25:
-                                       
+                                        if remaider==0:
                                             e1=e4[4:8]+e4[2:4]+e4[0:2]
                                             
                                               
@@ -378,8 +377,7 @@ class compression:
                                         e4=sda2[block:block+8]
                                         e1=e4
                                         remaider=cvf1%2
-                                        if remaider==0 and cvf1>25:
-                                        
+                                        if remaider==0:
                                             e1=e4[4:8]+e4[2:4]+e4[0:2]
                                         
                                         e5=int(e1,2)
@@ -420,7 +418,7 @@ class compression:
                                     qqwslenf="%0"+qqwslenf+"x"
                                      
                                     jl=binascii.unhexlify(qqwslenf % n)
-                                  
+                                    jl=paq.compress(jl)
                                     if cvf1==47:
                                                    
                                         
