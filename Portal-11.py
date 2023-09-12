@@ -420,7 +420,7 @@ class compression:
                                     qqwslenf="%0"+qqwslenf+"x"
                                      
                                     jl=binascii.unhexlify(qqwslenf % n)
-                                    jl=paq.compress(jl)
+                                  
                                     if cvf1==47:
                                                    
                                         
