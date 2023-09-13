@@ -192,7 +192,7 @@ class compression:
                                    
                                     
                                     sda4=""
-                                    if cvf1==1:
+                                    if cvf1==23:
                                                     
                                     
                                     
@@ -410,16 +410,9 @@ class compression:
                                     cvf1=cvf1+1
                                     sda2=sda4
                                     sda4=""
-                                    n = int(sda2, 2)
-                                        
-                                    qqwslenf=len(sda2)
-                                    qqwslenf=(qqwslenf/8)*2
-                                    qqwslenf=str(qqwslenf)
-                                    qqwslenf="%0"+qqwslenf+"x"
-                                     
-                                    jl=binascii.unhexlify(qqwslenf % n)
+                                    
                                  
-                                    if cvf1==1:
+                                    if cvf1==23:
                                                    
                                         
                                         
