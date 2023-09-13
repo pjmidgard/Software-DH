@@ -431,18 +431,6 @@ class compression:
 
                                 
 
-                                
-
-
-
-
-
-                               
-
-
-             
-
-
                                 if c==1:
 
                                     
@@ -459,7 +447,7 @@ class compression:
 
 
 
-                                        e4=sda2[block:block+16]
+                                        e4=sda2[block:block+12]
 
 
                                         e1=e4
@@ -471,10 +459,10 @@ class compression:
                                         if remaider==0:
 
 
-                                            e1=e4[4:8]+e4[2:4]+e4[0:2]+e4[8:16]
+                                            e1=e4[4:8]+e4[2:4]+e4[0:2]+e4[8:12]
 
                                         sda4+=e1
-                                        block+=16
+                                        block+=12
 
 
                                               
@@ -496,18 +484,6 @@ class compression:
                                     while block<lenf2:
 
 
-
-
-
-                           
-
-
-                                    
-
-
-
-
-
                                         e4=sda2[block:block+8]
 
 
@@ -523,21 +499,6 @@ class compression:
                                             e1=e4[4:8]+e4[2:4]+e4[0:2]
 
                                         
-
-                                            
-
-
-                                              
-
-
-                                              
-
-
-                                              
-
-
-                                        
-
 
                                         e5=int(e1,2)
 
@@ -611,46 +572,12 @@ class compression:
                                     sda2=sda4
 
 
-                                   
-
-
-                                   
-
-
-                                    
-
 
                                     sda4=""
 
 
                                     if cvf1==23:
 
-
-                                                    
-
-
-                                    
-
-
-                                    
-
-
-                                      
-
-
-
-
-
-
-
-
-
-
-
-                                  
-
-
-                                        
 
 
                                         n = int(sda2, 2)
@@ -720,24 +647,6 @@ class compression:
 
 
                                                     return print(x3)
-
-
-                                        
-
-
-                                        
-
-
-                                      
-
-
-                                            
-
-
-                                    
-
-
-
 
 
     def cryptograpy_unpack(self):                                 
@@ -1157,18 +1066,6 @@ class compression:
                                     while block<lenf2:
 
 
-
-
-
-                           
-
-
-                                    
-
-
-
-
-
                                         e4=sda2[block:block+8]
 
 
@@ -1222,33 +1119,9 @@ class compression:
 
                                             sda3=format(e5,"08b")
 
-
-                                        
-
-
-
-
-
-                                        
-
-
-                                    
-
-
-                                        
-
-
                                         sda4+=sda3
 
-
-                                            
-
-
                                         block+=8                                    
-
-
-                                    
-
 
                                     e6+=1
 
@@ -1276,30 +1149,11 @@ class compression:
 
                                     sda4=""
 
-
-                                    
-
-
-                                 
-
-
-                                    if cvf1==23:
-
-
-                                                   
-                  
+                                    if cvf1==23:                  
 
                                        block=0
 
-
-                                 
-
-
                                     while block<lenf2:
-
-
-
-
 
                                         e4=sda2[block:block+16]
 
@@ -1313,127 +1167,40 @@ class compression:
                                         if remaider==0:
 
 
-                                            e1=e4[4:8]+e4[2:4]+e4[0:2]+e4[8:16]
+                                            e1=e4[4:8]+e4[2:4]+e4[0:2]+e4[8:12]
 
                                         sda4+=e1  
-                                        block+=16
-
-
-                                              
-
+                                        block+=12
 
                                     sda2=sda4
                                     
-
                                     sda4="" 
-                                    if c==1:                                      
-
-
-                                        
-
-
+                                    if c==1:                                                                         
                                         n = int(sda2, 2)
 
-
-                                        
-
-
                                         qqwslenf=len(sda2)
-
-
                                         qqwslenf=(qqwslenf/8)*2
-
-
                                         qqwslenf=str(qqwslenf)
-
-
                                         qqwslenf="%0"+qqwslenf+"x"
-
-
-                                     
-
-
+                               
                                         jl=binascii.unhexlify(qqwslenf % n)
-
-
                                         sssssw=len(jl)
-
-
                                         data=jl
-
-
                                         qqqwz=qqqwz+1
-
-
                                         szxzzza=""
-
-
                                         szxzs=""
-
-
-                                    
-
-
                                         assxw=assxw+1
-
-
                                         if assxw==1:
-
-
                                                 assx=10
-
-
                                                 if assx==10:
-
-
-                                                
-
-
                                                     f2.write(jl)
-
-
                                                     x2 = time()
-
-
                                                     x3=x2-x
-
-
                                                     return print(x3)
 
-
-                     
-
-
-
-
-
-                                
-
-
-               
-
-
-
-
-
 d=compression()
-
-
-
-
-
 xw=d.cryptograpy_compression()
-
-
 print(xw)
-
-
-
-
-
 xw1=d.cryptograpy_unpack()
-
-
 print(xw1)
-
 #Portal-12 move to 12-D and back.
