@@ -1,36 +1,13 @@
-import os  
-
-
+import os
 from time import time
-
-
 import binascii
-
-
 import math
-
-
 import os.path
-
-
 namez = input("program: c and old program: e")
-
-
 #@Author Jurijus pacalovas
-
-
 #class03917606322JurijusPacalovasmade.pdf compression:03917606322JurijusPacalovasmade.pdf65536
-
-
 class compression:
-
-
     def cryptograpy_compression(self):
-
-
-                
-
-
                 self.name = "Created: Jurijus pacalovas Price Portal 1000 000 000 Euro cost Date: 26/07/2021 17:11 Deep 14.5 ERA"
 
 
