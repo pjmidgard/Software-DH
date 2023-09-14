@@ -3,7 +3,8 @@ from time import time
 import binascii
 import math
 import os.path
-namez = "c"
+
+namez = input("program: c and old program: e")
 #@Author Jurijus pacalovas
 #class03917606322JurijusPacalovasmade.pdf compression:03917606322JurijusPacalovasmade.pdf65536
 class compression:
@@ -13,7 +14,7 @@ class compression:
                 if namez=="c":
                     corridors=0
                     cor7=0
-                    name = "1.bin.bin"
+                    name = input("What is name of file? ")
                     namea="file.Secret"
                     namem=""
                     namema="?"
