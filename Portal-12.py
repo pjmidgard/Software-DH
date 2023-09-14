@@ -181,7 +181,7 @@ class compression:
                                     cvf1=cvf1+1
                                     sda2=sda4
                                     sda4=""
-                                    if cvf1==10000:
+                                    if cvf1==23:
                                                     
                                     
                                     
@@ -388,7 +388,7 @@ class compression:
                                     cvf1=cvf1+1
                                     sda2=sda4
                                     sda4=""
-                                    if cvf1==10000:
+                                    if cvf1==23:
                                                    
                                         
                                         
