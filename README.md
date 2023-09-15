@@ -2,7 +2,7 @@
 
 c:
 
-1.: Portals
+1.: DNA
 
 2.: Spring
 
@@ -10,7 +10,7 @@ e:
 
 1.: Spring
 
-2.: Portals1
+2.: DNA
 
 
 Spring 160 can compress 1.15792089 × 10^68 gigabytes file
