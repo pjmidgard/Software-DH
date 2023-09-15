@@ -156,17 +156,17 @@ class compression:
 
                                         e4=sda2[block:block+8]
                                         e1=e4
-                                        remaider=cvf1%3+block//16+block
+                                        remaider=cvf1%blockw+block//16+block
 
                                         r1=(block//8)+(block//8)
                                         r2=(block//8)+block+(block//8)
                                         r3=block%3+(block//8)
                                         r4=block%4+(block//8)
 
-                                        if remaider==0 and r1==0 or remaider==0 and r2==0 or remaider==0 and r3==0 or remaider==0 and r4==0:
+                                        if remaider==0 and r1==0 or remaider==0 and r2==blockw or remaider==0 and r3==0 or remaider==0 and r4==0:
                                             e1=e4[4:8]+e4[2:4]+e4[0:2]
 
-                                        if remaider==0 and r1==1 or remaider==0 and r2==1 or remaider==0 and r3==1 or remaider==0 and r4==1:
+                                        if remaider==0 and r1==blockw or remaider==0 and r2==blockw or remaider==0 and r3==blockw or remaider==0 and r4==blockw:
                                             e1=e4[4:8]+e4[0:4] 
                                             
                                         if remaider==0:
@@ -191,6 +191,10 @@ class compression:
                                             
                                             sda3=format(e5,"08b")
                                         sda4+=sda3
+                                        
+                                        blockw+=1
+                                        if blockw==1000:
+                                            blockw==1
                                             
                                         block+=8                                    
                                     
@@ -202,11 +206,17 @@ class compression:
                                         e7=255
                                     cvf1=cvf1+1
                                     sda2=sda4
+                                    blockw=5
+                                    
+                                    
+
+                                    
+                                
                                    
                                    
                                     
                                     sda4=""
-                                    if cvf1==23:
+                                    if cvf1==11:
                                                     
                                     
                                     
@@ -389,17 +399,17 @@ class compression:
 
                                         e4=sda2[block:block+8]
                                         e1=e4
-                                        remaider=cvf1%3+block//16+block
+                                        remaider=cvf1%blockw+block//16+block
 
                                         r1=(block//8)+(block//8)
                                         r2=(block//8)+block+(block//8)
                                         r3=block%3+(block//8)
                                         r4=block%4+(block//8)
 
-                                        if remaider==0 and r1==0 or remaider==0 and r2==0 or remaider==0 and r3==0 or remaider==0 and r4==0:
+                                        if remaider==0 and r1==0 or remaider==0 and r2==blockw or remaider==0 and r3==0 or remaider==0 and r4==0:
                                             e1=e4[4:8]+e4[2:4]+e4[0:2]
 
-                                        if remaider==0 and r1==1 or remaider==0 and r2==1 or remaider==0 and r3==1 or remaider==0 and r4==1:
+                                        if remaider==0 and r1==blockw or remaider==0 and r2==blockw or remaider==0 and r3==blockw or remaider==0 and r4==blockw:
                                             e1=e4[4:8]+e4[0:4] 
                                             
                                         if remaider==0:
@@ -407,7 +417,9 @@ class compression:
                                             
                                               
                                         if remaider==1:
-                                            e1=e4[4:8]+e4[0:4]                                      
+                                            e1=e4[4:8]+e4[0:4]                                          
+                                        
+                                                             
                                         
                                         e5=int(e1,2)
                                         if e5==e6:
@@ -421,12 +433,11 @@ class compression:
                                         else:
                                             
                                             sda3=format(e5,"08b")
-                                        
-
-                                        
-                                    
-                                        
                                         sda4+=sda3
+                                        
+                                        blockw+=1
+                                        if blockw==1000:
+                                            blockw==1
                                             
                                         block+=8                                    
                                     
@@ -438,10 +449,11 @@ class compression:
                                         e7=255
                                     cvf1=cvf1+1
                                     sda2=sda4
+                                    blockw=5
                                     sda4=""
                                     
                                  
-                                    if cvf1==23:
+                                    if cvf1==11:
                                                    
                                         
                                         
