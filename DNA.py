@@ -155,7 +155,7 @@ class compression:
                                     
 
                                         e4=sda2[block:block+8]
-                                        e6=""
+                                        e61=""
                                         e61=e4[0:4]
                                         
                                         
@@ -412,7 +412,7 @@ class compression:
 
                                         e4=sda2[block:block+8]
                                         
-                                        e6=""
+                                        e61=""
                                         e61=e4[0:4]
                                         
                                         
