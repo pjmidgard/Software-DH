@@ -155,15 +155,7 @@ class compression:
                                     
 
                                         e4=sda2[block:block+8]
-                                        e61=""
-                                        e61=e4[0:4]
-                                        
-                                        
-    
-                                        if e61[0:4]=="1111":
-                                            e4="0010"+e4[4:8]
-                                        elif e61[0:4]=="0010":
-                                            e4="1111"+e4[4:8]
+                            
                                        
                                             
                                             
@@ -417,10 +409,7 @@ class compression:
                                         
                                         
     
-                                        if e61[0:4]=="1111":
-                                            e4="0010"+e4[4:8]
-                                        elif e61[0:4]=="0010":
-                                            e4="1111"+e4[4:8]
+                            
                                         
                                         e1=e4
                                         remaider=cvf1%blockw+block//16+block
