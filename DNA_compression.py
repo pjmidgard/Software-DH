@@ -334,7 +334,7 @@ class compression:
                         # Read the whole file at once
                         data = binary_file.read()
                         import paq
-                        data=paq.compress(data)
+                        data=paq.decompress(data)
                                                   
                         s=str(data)
                         
