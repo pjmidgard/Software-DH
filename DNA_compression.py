@@ -8,7 +8,7 @@ import math
 
 import os.path
 
-namez = input("Computer code: c and old computer code: e: ")
+namez = input("New computer code: c and old computer code: e: ")
 
 #@Author Jurijus pacalovas
 
