@@ -3,7 +3,7 @@ from time import time
 import binascii
 import math
 import os.path
-namez = input("New Computer code: c and old computer code: e: ")
+namez = input("program: c and old program: e: ")
 #@Author Jurijus pacalovas
 
 class compression:
@@ -144,7 +144,25 @@ class compression:
                                 c=1
 
                                
-             
+                                block=0
+
+                                while block<lenf2:
+                                                   e4=sda2[block:block+9]
+                                                   if e4=="000000000":
+                                                       e4="011100101"
+                                                       sda4+=e4
+                                                   elif e4=="011100101":
+                                                       e4="000000000"
+                                                       sda4+=e4
+                                                       
+                                                   else:
+                                                       sda4+=e4
+                                                       
+                                                       
+                                        
+                                                   block+=9  
+                                sda2=sda4
+                                sda4=""                              
                                 if c==1:
 
                                     block=0
@@ -161,17 +179,27 @@ class compression:
                                             
                                          
                                         e1=e4
+                                        
+                                                                               
+
+
+                                        
                                         remaider=cvf1%blockw+block//16+block
+                                        
+                                        r1=(block//8)+(block//blockw)
+                                        r2=(block//8)+block+(block//8)
+                                        r3=block%3+(block//8)
+                                        r4=block%9+(block//8)
 
                                         r1=(block//8)+(block//blockw)
                                         r2=(block//8)+block+(block//8)
                                         r3=block%3+(block//8)
                                         r4=block%4+(block//blockw)
 
-                                        if remaider==0 and r1==0 or remaider==0 and r2==blockw or remaider==0 and r3==0 or remaider==0 and r4==0:
+                                        if remaider==0 and r1==0 or remaider==0 and r2<=blockw//(1024*20) or remaider==0 and r3==0 or remaider==0 and r4==0:
                                             e1=e4[4:8]+e4[2:4]+e4[0:2]
 
-                                        if remaider==0 and r1==blockw or remaider==0 and r2==blockw or remaider==0 and r3==blockw or remaider==0 and r4==blockw:
+                                        if remaider==0 and r1==blockw or remaider==0 and r2<=blockw or remaider==0 and r3==blockw or remaider==0 and r4==blockw:
                                             e1=e4[4:8]+e4[0:4] 
                                             
                                         if remaider==0:
@@ -413,16 +441,22 @@ class compression:
                                         
                                         e1=e4
                                         remaider=cvf1%blockw+block//16+block
+                                        
+                                        r1=(block//8)+(block//blockw)
+                                        r2=(block//8)+block+(block//8)
+                                        r3=block%3+(block//8)
+                                        r4=block%9+(block//8)
 
                                         r1=(block//8)+(block//blockw)
                                         r2=(block//8)+block+(block//8)
                                         r3=block%3+(block//8)
                                         r4=block%4+(block//blockw)
 
+
                                         if remaider==0 and r1==0 or remaider==0 and r2==blockw or remaider==0 and r3==0 or remaider==0 and r4==0:
                                             e1=e4[4:8]+e4[2:4]+e4[0:2]
 
-                                        if remaider==0 and r1==blockw or remaider==0 and r2==blockw or remaider==0 and r3==blockw or remaider==0 and r4==blockw:
+                                        if remaider==0 and r1==blockw or remaider==0 and r2<=blockw//(1024*20) or remaider==0 and r3==blockw or remaider==0 and r4==blockw:
                                             e1=e4[4:8]+e4[0:4] 
                                             
                                         if remaider==0:
@@ -465,6 +499,25 @@ class compression:
                                     blockw=5
                                     sda4=""
                                     
+                                    block=0
+                                 
+                                    while block<lenf2:
+                                                   e4=sda2[block:block+9]
+                                                   if e4=="000000000":
+                                                       e4="011100101"
+                                                       sda4+=e4
+                                                   elif e4=="011100101":
+                                                       e4="000000000"
+                                                       sda4+=e4
+                                                       
+                                                   else:
+                                                       sda4+=e4
+                                                       
+                                                       
+                                        
+                                                   block+=9  
+                                    sda2=sda4
+                                    sda4=""                                     
                                  
                                     if cvf1==23:
                                                    
