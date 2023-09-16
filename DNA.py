@@ -3,7 +3,7 @@ from time import time
 import binascii
 import math
 import os.path
-namez = input("Computer code: c and old computer code: e: ")
+namez = input("New Computer code: c and old computer code: e: ")
 #@Author Jurijus pacalovas
 
 class compression:
