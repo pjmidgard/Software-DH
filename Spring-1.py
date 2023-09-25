@@ -5,15 +5,18 @@ import os
 import binascii
 import math
 
-Deep=4
-Spin2=300
+Deep=400
+Spin2=3112
 
 lenf=0
 name=""
 szx=""
 wer=""
-namez = input("c, c2: compress or e, e2: extract? ")
 
+
+namez = input("c, c2: compress or e, e2: extract? ")
+if namez=="c2":
+	Deep2=8
 f = open("PI_10M.txt", "r")
 PI=f.read()
 
@@ -1004,7 +1007,7 @@ class compression:
                                     ei=0
  
                                     lenf6F=lenf6
-                                    Times=lenf6F-16
+                                    Times=lenf6F-(8+Deep2)
 
                                     ei=0
 
@@ -1024,7 +1027,7 @@ class compression:
 	                                    
 	                                    
 	                                    
-	                                    sda32=sda2[ei:ei+8]
+	                                    sda32=sda2[ei:ei+Deep2]
 	                                    T22 = int(sda32, 2)
 	                                    Ssize=len(sda32)
 	                                   
@@ -1035,7 +1038,7 @@ class compression:
 	                                    
 	                                    	
 	                                    	
-	                                    T16=sda2[8:Times+8]
+	                                    T16=sda2[Deep2:Times+Deep2]
 	                               
 	                                    
 	                                    	
@@ -1048,7 +1051,7 @@ class compression:
 	                   
 	                                    
 	                                    T12 = int(T16, 2)
-	                                    sda2=sda2[Times+8:]
+	                                    sda2=sda2[Times+Deep2:]
 	                                    
 	                                    sda10=sda2
 	                                    Ssize=len(sda10)
