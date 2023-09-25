@@ -54,12 +54,21 @@ class compression:
                     nac=len(nameas)
 
                     if i==2:
-                        if nameas[nac-4:nac]!=".bin":
+                        if nameas[nac-4:nac]!=".bin" and nameas[nac-3:nac]!=".b2":
                              print("Program close because this is file is not .bin")
                              raise SystemExit
+                    Go=0
+                             
+                    if  i==2: 
+                                long2=len(nameas)
+                                nameas1=nameas[long2-3:]
+                                if nameas1==".b2":
+                                     Go=1
+                                else:
+                                    nameas=name[:nac-4]
+                                    nac=len(nameas)
                         
-                        nameas=name[:nac-4]
-                        nac=len(nameas)
+                        
                     
                     if i==1:
                         
@@ -126,9 +135,25 @@ class compression:
 
                         lenf1=len(data)
                         lenf7=len(data)
+         
+                                                           
+                        if Go==1:
+                                    nameas=nameas[:long2-3]
+                                    #print(nameas)
+                                    
+                                    
+                                    with open(nameas, "ab") as f7:
+                                        f7.write(data)
+                                        print("Finish all done!")
+                                    raise SystemExit              
+                                
                         if lenf1<=1024:
-                          
-                               
+                            if i==1:
+                                long2=len(nameas)
+                                nameas=nameas[:long2-4]
+                                nameas=nameas+".b2"
+                            
+                            
                             with open(nameas, "ab") as f7:
                                 f7.write(data)
                                 print("Finish all done!")
