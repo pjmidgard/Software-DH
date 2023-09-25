@@ -119,11 +119,21 @@ class compression:
 
                        # Read the whole file at once
                         data = binary_file.read()
+                        
+                       
       
                         s=str(data)
 
                         lenf1=len(data)
                         lenf7=len(data)
+                        if lenf1<=1024:
+                          
+                               
+                            with open(nameas, "ab") as f7:
+                                f7.write(data)
+                                print("Finish all done!")
+                            raise SystemExit 
+                       
                         
                         END_working=0
                         Circle_times2=0
@@ -716,7 +726,9 @@ class compression:
                                                    print("FAST")
 
                                              
+                                            return print(x3)
+
 d=compression()
 
 xw=d.cryptograpy_compression4()
-print(xw)                                          return print(x3)
+print(xw)
