@@ -1,3 +1,5 @@
+import os
+
 # Define a dictionary for encoding and decoding
 encoding_dict = {
     b'0': b'000',
@@ -28,11 +30,17 @@ def decode_data(data):
     return decoded_data
 
 def compress_data(data):
-    compressed_data = encode_data(data)
+    # Save original file size as metadata
+    original_size = len(data).to_bytes(4, byteorder='big')
+    compressed_data = original_size + encode_data(data)
     return compressed_data
 
 def extract_data(data):
-    extracted_data = decode_data(data)
+    # Extract original file size from metadata
+    original_size = int.from_bytes(data[:4], byteorder='big')
+    decoded_data = decode_data(data[4:])
+    # Ensure the extracted data is cut to the correct size
+    extracted_data = decoded_data[:original_size]
     return extracted_data
 
 def main():
@@ -66,6 +74,8 @@ def main():
                 print(f"Unable to save the compressed data to '{output_filename}'. Please provide a valid file path.")
 
             print(f"Compression complete. Data saved to '{output_filename}'.")
+            print(f"Original file size: {len(original_data)} bytes")
+            print(f"Compressed file size: {len(compressed_data)} bytes")
 
         elif choice == '2':
             input_filename = input("Enter the name of the file containing compressed data for extraction: ")
@@ -89,6 +99,7 @@ def main():
                 print(f"Unable to save the extracted data to '{output_filename}'. Please provide a valid file path.")
 
             print(f"Extraction complete. Data saved to '{output_filename}'.")
+            print(f"Original file size: {len(extracted_data)} bytes")
 
         elif choice == '3':
             print("Exiting program.")
