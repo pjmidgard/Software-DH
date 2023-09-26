@@ -678,7 +678,7 @@ class compression:
                                                                                     size_data4=size_data4#11
                                                                                
                                                                                 elif size_data4[:2]=="01":
-                                                                                    size_data4="101"+size_data4[2:]#10                                                                               
+                                                                                    size_data4="101"+size_data4[2:]#101                                                                              
                                                                                 else:
                                                                                    while Stop1!=1:
                                                                                            
@@ -898,9 +898,7 @@ class compression:
 
                                     
 
-                                    import paq
-
-                                    jl= paq.compress(jl)
+                                
 
                                     #print(size_after)
 
@@ -1111,10 +1109,6 @@ class compression:
 
 
                     
-
-                        import paq
-
-                        data= paq.decompress(data)
 
                     
 
@@ -1534,86 +1528,32 @@ class compression:
 
 
 
-                                                                                    if Times6>Deep_long or size_after2!=long_block and Times6>Deep_long:
 
-                                                                                        Zeroes4=size_data3[block:block+blocks]
-
-                                                                                        size_after4=len(Zeroes4)
-
-                                                                                        size_data4=Zeroes4
-
-
-
-                                                                                        block=block+size_after4
-
-                                                                                        
-
-                                                                                    elif Zeroes=="10" and size_after2==long_block and Times6<=Deep_long:
-
-                                                                                        block=block+0
-
-                                                                                        Zeroes3="1"+"1"+size_data3[block+2:block+blocks]
-
-                                                                                        size_after3=len(Zeroes3)
-
-                                                                                        size_data4=Zeroes3
-
-                                                                                        
-
-                                                                                        block=block+size_after3
-
-                                                                                        #print(len(size_data4))
-
-                                                                                        
-
-                                                                                        
-
-                                                                                    elif Zeroes=="01" and size_after2==long_block and Times6<=Deep_long:
-
-                                                                                        block=block+1
-
-                                                                                        Zeroes3="1"+"0"+size_data3[block+1:block+(blocks-1)]
-
-                                                                                        size_after3=len(Zeroes3)
-
-                                                                                        size_data4=Zeroes3
-
-                                                                                        
-
-                                                                                        block=block+(size_after3-1)
-
-                                                                                        
-
-                                                                                    elif Zeroes=="00" and size_after2==long_block and Times6<=Deep_long:
-
-                                                                                        block=block+1
-
-                                                                                        Zeroes3=size_data3[block:block+blocks]
-
-                                                                                        size_after3=len(Zeroes3)
-
-                                                                                        size_data4=Zeroes3
-
-                                                                                        
-
-                                                                                        block=block+size_after3
-
-
-
-                                                                                    elif Zeroes=="11" and size_after2==long_block and Times6<=Deep_long:
-
-                                                                                        block=block+1
-
-                                                                                    
-
-                                                                                        size_of_block=len(Zeroes)
+                                                                                if size_data4[:1]=="1":
+                                                                                    size_data4=size_data4#11
+                                                                               
+                                                                                elif size_data4[:2]=="01":
+                                                                                    size_data4="101"+size_data4[2:]#101                                                                              
+                                                                                else:
+                                                                                   while Stop1!=1:
+                                                                                           
+                                                                                           if size_data4[:1]=="0":
+                                                                                               size_data4=size_data4[1:]
+                                                                                               st+="0"
+                                                                                             
+                                                                                               #print(st)
+                                                                                           elif size_data4[:1]=="1" or   len(st)==16:
+                                                                                               size_data4=st[1:]+"1"+size_data4[1:]
+                                                                                               Stop1=1
+                                                                                       
+                         
 
                                                                                         #print(size_of_block)
 
 
 
-                                                                                        
-
+                                                                                Continue=1     
+                                                                                if Continue==1:
                                                                                                                                                                         
 
                                                                                         MAX_zeroes=bin(long_block-1)[2:]
@@ -1626,7 +1566,7 @@ class compression:
 
                                                                                         
 
-                                                                                        Times_extract_of_time_zeroes=size_data3[block:block+Size_max_zeroes]
+                                                                                        Times_extract_of_time_zeroes=size_data4
 
                                                                                         #print(Times_extract_of_time_zeroes)
 
