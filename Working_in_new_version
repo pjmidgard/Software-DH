@@ -563,6 +563,7 @@ class compression:
                                                                                 Times6=Times6+1
 
                                                                                 Zeroes=size_data3[block:block+blocks]
+                                                                                size_data4=Zeroes
 
                                                                                 size_of_block=len(Zeroes)
 
@@ -666,23 +667,27 @@ class compression:
 
                                                                                 size_after_block=len(size_data7)
                                                                                 Stop1=0
-                                                                                St=""
+                                                                                st=""
+                                                                                #print(size_data4)
 
                                                                                 #print(size_after_block)
 
 
 
                                                                                 if size_data4[:1]=="1":
-                                                                                    size_data4="1"+size_data4#11
+                                                                                    size_data4=size_data4#11
                                                                                
                                                                                 elif size_data4[:2]=="01":
-                                                                                    size_data4="10"+size_data4#10                                                                               
+                                                                                    size_data4="101"+size_data4[2:]#10                                                                               
                                                                                 else:
                                                                                    while Stop1!=1:
+                                                                                           
                                                                                            if size_data4[:1]=="0":
                                                                                                size_data4=size_data4[1:]
                                                                                                st+="0"
-                                                                                           elif size_data4[:1]=="0":
+                                                                                             
+                                                                                               #print(st)
+                                                                                           elif size_data4[:1]=="1" or   len(st)==16:
                                                                                                size_data4=st[1:]+"1"+size_data4[1:]
                                                                                                Stop1=1
                                                                                        
@@ -699,7 +704,7 @@ class compression:
                                                                                 
                                                                                 block=block+blocks
 
-                                                                                #print(block)
+                                                                                #print(size_data4)
 
                                                          
 
