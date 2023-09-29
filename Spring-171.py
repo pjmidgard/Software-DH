@@ -1,5 +1,6 @@
 import paq
 import math
+#Author Jurijus Pacalovas 
 
 # Function to compress binary data
 def compress_binary_data(data):
