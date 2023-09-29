@@ -33,7 +33,8 @@ def generate_pi_sequence(pi_value, start, end):
 # Function to generate a sequence of numbers from 5 to 2^20
 def generate_sequence_5_to_2_20():
     start_range = 1
-    end_range = (2 ** 8096000)*2
+
+    end_range = (2 ** 11073741824)*2
     sequence = list(range(start_range, end_range + 1))
     return sequence
 
@@ -96,7 +97,7 @@ while True:
 
         # Generate a sequence of numbers by incrementing pi
         start_range = 1
-        end_range =  (2 ** 8096000)*2
+        end_range =  (2 ** 11073741824)*2
         results = generate_pi_sequence(pi_value, start_range, end_range)
 
         # Print the list of results
