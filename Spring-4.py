@@ -1,5 +1,6 @@
 import zstandard as zstd
 import paq
+#Author Jurijus Pacalovas 
 
 # Function to find Pythagorean triples
 def find_pythagorean_triples(limit):
