@@ -1,6 +1,5 @@
 import zstandard as zstd
 import paq
-#Author Jurijus Pacalovas 
 
 # Function to find Pythagorean triples
 def find_pythagorean_triples(limit):
@@ -54,8 +53,8 @@ if option == "1":
         with open(input_file_name, 'rb') as input_file:
             input_data = input_file.read()
 
-        # Step 1: Find Pythagorean triples within a certain limit (2^11)
-        limit = 2**24  # Adjust the limit as needed
+        # Step 1: Find Pythagorean triples within a certain limit (2^24)
+        limit = 2**24 # Adjust the limit as needed
         triples = find_pythagorean_triples(limit)
 
         # Step 2: Convert Pythagorean triples to binary data
