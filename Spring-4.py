@@ -1,7 +1,7 @@
-import zstandard as zstd
 import paq
-#Author Jurijus Pacalovas 
-#Created Jurijus Pacalovas 
+#Author Jurijus Pacalovas
+#Created Jurijus Pacalovas
+
 # Function to find Pythagorean triples
 def find_pythagorean_triples(limit):
     triples = []
@@ -55,7 +55,7 @@ if option == "1":
             input_data = input_file.read()
 
         # Step 1: Find Pythagorean triples within a certain limit (2^24)
-        limit = (2**24)-1 # Adjust the limit as needed
+        limit = (2**24) - 1  # Adjust the limit as needed
         triples = find_pythagorean_triples(limit)
 
         # Step 2: Convert Pythagorean triples to binary data
@@ -64,12 +64,8 @@ if option == "1":
         # Step 3: Append binary data to the original input data
         input_data += binary_data
 
-        # Step 4: Compress the combined data using Zstd
-        cctx = zstd.ZstdCompressor()
-        zstd_compressed_data = cctx.compress(input_data)
-
-        # Step 5: Compress the Zstd compressed data using Paq
-        paq_compressed_data = paq.compress(zstd_compressed_data)
+        # Step 4: Compress the combined data using Paq
+        paq_compressed_data = paq.compress(input_data)
 
         # Save the Paq compressed data to the specified file in binary mode ('wb')
         with open(output_file_name, 'wb') as compressed_file:
@@ -89,11 +85,9 @@ elif option == "2":
             paq_compressed_data = input_file.read()
 
         # Step 1: Decompress the Paq compressed data
-        zstd_compressed_data = paq.decompress(paq_compressed_data)
+        decompressed_data = paq.decompress(paq_compressed_data)
 
-        # Step 2: Decompress the Zstd compressed data
-        dctx = zstd.ZstdDecompressor()
-        decompressed_data = dctx.decompress(zstd_compressed_data)
+        # The rest of your existing code remains unchanged for finding triples and processing binary data.
 
         # Step 3: Find binary data that represents Pythagorean triples
         binary_data = decompressed_data[-(len(triples) * 3):]  # Assuming each triple is 3 bytes
