@@ -57,7 +57,7 @@ option = input("Select an option (1 or 2): ")
 if option == "1":
     # Compression and Save
     input_file_name = input("Enter the name of the input file for compression: ")
-    output_file_name = input("Enter the name of the output compressed file: ")
+    output_file_name = input_file_name+".bin"
 
     try:
         with open(input_file_name, 'rb') as input_file:
@@ -87,7 +87,8 @@ if option == "1":
 elif option == "2":
     # Extraction and Save
     input_file_name = input("Enter the name of the input compressed file for extraction: ")
-    output_file_name = input("Enter the name of the output extracted file: ")
+    input_file_name_long=len(input_file_name)
+    output_file_name = input_file_name[:input_file_name_long-4]
 
     try:
         with open(input_file_name, 'rb') as input_file:
