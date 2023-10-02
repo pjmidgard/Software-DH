@@ -4,10 +4,19 @@ import paq
 
 # Function to find Pythagorean triples
 def find_pythagorean_triples(limit):
+    d=2
+    e=2
+    f=1
+    g=1
     triples = []
-    for a in range(1, limit + 1):
-        for b in range(a, limit + 1):
-            c = (a**2 + b**2)
+    for a in range(1, limit - f):
+        for b in range(a, limit + g):
+            c = (a**d + b**e)
+            #print(c)
+            f+=1
+            g+=1
+            d+=1
+            e+=1
             if isinstance(c, float) and c.is_integer():
                 triples.append((a, b, int(c)))
     return triples
@@ -30,7 +39,7 @@ def binary_to_triples(binary_data):
 
     for value in binary_data:
         current_triple.append(value)
-        if len(current_triple) == 3:
+        if len(current_triple) == 1:
             triples.append(tuple(current_triple))
             current_triple = []
 
@@ -55,7 +64,7 @@ if option == "1":
             input_data = input_file.read()
 
         # Step 1: Find Pythagorean triples within a certain limit (2^24)
-        limit = (2**24) - 1  # Adjust the limit as needed
+        limit = 12# Adjust the limit as needed
         triples = find_pythagorean_triples(limit)
 
         # Step 2: Convert Pythagorean triples to binary data
@@ -90,7 +99,7 @@ elif option == "2":
         # The rest of your existing code remains unchanged for finding triples and processing binary data.
 
         # Step 3: Find binary data that represents Pythagorean triples
-        binary_data = decompressed_data[-(len(triples) * 3):]  # Assuming each triple is 3 bytes
+        binary_data = decompressed_data[-(len(triples) * 1):]  # Assuming each triple is 3 bytes
 
         # Step 4: Convert binary data back to Pythagorean triples
         extracted_triples = binary_to_triples(binary_data)
