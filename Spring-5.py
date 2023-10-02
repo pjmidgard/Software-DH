@@ -88,7 +88,10 @@ elif option == "2":
     # Extraction and Save
     input_file_name = input("Enter the name of the input compressed file for extraction: ")
     input_file_name_long=len(input_file_name)
-    output_file_name = input_file_name[:input_file_name_long-4]
+    if input_file_name[input_file_name_long-4:]!=".bin":
+        print("Sorry, This is not binary file!")
+    else:
+        output_file_name = input_file_name[:input_file_name_long-4]
 
     try:
         with open(input_file_name, 'rb') as input_file:
