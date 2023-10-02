@@ -26,7 +26,7 @@ def triples_to_binary(triples):
     binary_data = b''
     for triple in triples:
         for component in triple:
-            if 0 <= component <= 15:
+            if 0 <= component <= 7:
                 binary_data += bytes([component])
             else:
                 raise ValueError("Triple component out of valid byte range (0-255)")
@@ -64,7 +64,7 @@ if option == "1":
             input_data = input_file.read()
 
         # Step 1: Find Pythagorean triples within a certain limit (2^24)
-        limit = 15# Adjust the limit as needed
+        limit = 12# Adjust the limit as needed
         triples = find_pythagorean_triples(limit)
 
         # Step 2: Convert Pythagorean triples to binary data
