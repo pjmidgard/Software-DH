@@ -1,12 +1,9 @@
 import paq
 
-# Author Jurijus Pacalovas
-# Created Jurijus Pacalovas
-
 # Function to find Pythagorean triples
 def find_pythagorean_triples(limit):
-    d = 4  # Changed d to 4
-    e = 4  # Changed e to 4
+    d = 4
+    e = 4
     f = 1
     g = 1
     triples = []
@@ -48,8 +45,8 @@ def binary_to_triples(binary_data):
 # Initialize the 'triples' variable to an empty list
 triples = []
 
-# Create a fast range array from 1 to 16777216 (2^24)
-fast_range = range(1, 16777217)
+# Create a fast range array from 1 to 12 (your desired limit)
+fast_range = range(1, 12)
 
 # Ask the user for options
 print("Options:")
@@ -66,17 +63,30 @@ if option == "1":
         with open(input_file_name, 'rb') as input_file:
             input_data = input_file.read()
 
-        # Step 1: Find Pythagorean triples within a certain limit (2^24)
-        limit = 16777216  # 2^24
+        # Step 1: Find Pythagorean triples within a certain limit (12 in this case)
+        limit = 12
         triples = find_pythagorean_triples(limit)
 
-        # Step 2: Convert Pythagorean triples to binary data
+        # Step 2: Apply your formula to each element of triples
+        y = 24  # Change this to your desired value for y
+        Add = 42  # Change this to your desired value for Add
+        T_Real = 2  # Change this to your desired value for T_Real
+        Divided_corrdiates = 3  # Change this to your desired value for Divided_corrdiates
+
+        for i, triple in enumerate(triples):
+            a, b, c = triple
+            a = (((a * (2 ** y) + Add) // 3) * T_Real) // Divided_corrdiates
+            b = (((b * (2 ** y) + Add) // 3) * T_Real) // Divided_corrdiates
+            c = (((c * (2 ** y) + Add) // 3) * T_Real) // Divided_corrdiates
+            triples[i] = (a, b, c)
+
+        # Step 3: Convert Pythagorean triples to binary data
         binary_data = triples_to_binary(triples)
 
-        # Step 3: Append binary data to the original input data
+        # Step 4: Append binary data to the original input data
         input_data += binary_data
 
-        # Step 4: Compress the combined data using Paq
+        # Step 5: Compress the combined data using Paq
         paq_compressed_data = paq.compress(input_data)
 
         # Save the Paq compressed data to the specified file in binary mode ('wb')
