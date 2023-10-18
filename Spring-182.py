@@ -36,7 +36,7 @@ def binary_to_triples(binary_data):
 
     for value in binary_data:
         current_triple.append(value)
-        if len(current_triple) == 3:
+        if len(current_triple) == 4:
             triples.append(tuple(current_triple))
             current_triple = []
 
