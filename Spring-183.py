@@ -1,5 +1,11 @@
 import paq
 
+# Function to reverse bits from "000000000" to "111000011" and vice versa
+def reverse_bits(data):
+    reversed_data = data.replace(b'000000000', b'111000011')
+    reversed_data = reversed_data.replace(b'111000011', b'000000000')
+    return reversed_data
+
 # Function to find Pythagorean triples
 def find_pythagorean_triples(limit):
     d = 4
@@ -63,6 +69,9 @@ if option == "1":
         with open(input_file_name, 'rb') as input_file:
             input_data = input_file.read()
 
+        # Reverse the first 512 bits
+        input_data = reverse_bits(input_data)
+
         # Step 1: Find Pythagorean triples within a certain limit (12 in this case)
         limit = 12
         triples = find_pythagorean_triples(limit)
@@ -113,7 +122,8 @@ elif option == "2":
         # Step 1: Decompress the Paq compressed data
         decompressed_data = paq.decompress(paq_compressed_data)
 
-        # The rest of your existing code remains unchanged for finding triples and processing binary data.
+        # Reverse the first 512 bits
+        decompressed_data = reverse_bits(decompressed_data)
 
         # Step 3: Find binary data that represents Pythagorean triples
         binary_data = decompressed_data[-(len(triples) * 1):]  # Assuming each triple is 3 bytes
