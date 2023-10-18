@@ -1,105 +1,121 @@
 import paq
 
-# Initialize X1, X2, and X3
-X1 = 0
-X2 = 0
-X3 = 0
+#Author Jurijus Pacalovas
+#Created Jurijus Pacalovas
 
-# Variables to store saved values
-saved_X1 = None
-saved_X2 = None
+# Function to find Pythagorean triples
+def find_pythagorean_triples(limit):
+    d = 2
+    e = 2
+    f = 1
+    g = 1
+    triples = []
+    for a in range(1, limit - f):
+        for b in range(a, limit + g):
+            c = (a**d + b**e)
+            f += 1
+            g += 1
+            d += 1
+            e += 1
+            if isinstance(c, float) and c.is_integer():
+                triples.append((a, b, int(c)))
+    return triples
 
-# Algorithm for X1-X3 with 24-bit blocks
-def compress_X1_X3(data):
-    global X1, X2, X3, saved_X1, saved_X2  # Declare the variables as global
+# Function to convert Pythagorean triples to binary data
+def triples_to_binary(triples):
+    binary_data = b''
+    for triple in triples:
+        for component in triple:
+            if 0 <= component <= 7:
+                binary_data += bytes([component])
+            else:
+                raise ValueError("Triple component out of valid byte range (0-255)")
+    return binary_data
 
-    compressed_data = b""
-    count = 0  # Initialize count to 0
-    prev_bit = data[0]
+# Function to convert binary data to Pythagorean triples
+def binary_to_triples(binary_data):
+    triples = []
+    current_triple = []
 
-    for bit in data:
-        if bit == prev_bit:
-            count += 1
-            if count == 256:  # Check if count reaches 256 (one-byte limit)
-                compressed_data += bytes([prev_bit]) + bytes([255])
-                count = 0  # Reset count after reaching 256
-        else:
-            compressed_data += bytes([prev_bit]) + bytes([count])  # Store the bit and count
-            prev_bit = bit
-            count = 1
+    for value in binary_data:
+        current_triple.append(value)
+        if len(current_triple) == 1:
+            triples.append(tuple(current_triple))
+            current_triple = []
 
-        X1 += 1
-        X3 += 1
+    return triples
 
-        if X1 == 2**23:
-            saved_X1 = X1
-            saved_X2 = X2
-            count = 0  # Reset count after saving values
+# Initialize the 'triples' variable to an empty list
+triples = []
 
-        if X2 == 1:
-            X2 = 0
+# Ask the user for options
+print("Options:")
+print("1. Compression and Save")
+print("2. Extraction and Save")
+option = input("Select an option (1 or 2): ")
 
-        if X3 == 2**24:  # Check if X3 reaches the maximum value
-            X3 = 0
+if option == "1":
+    # Compression and Save
+    input_file_name = input("Enter the name of the input file for compression: ")
+    output_file_name = input_file_name + ".bin"
 
-    compressed_data += bytes([prev_bit]) + bytes([count])  # Store the final bit and count
-    return compressed_data
+    try:
+        with open(input_file_name, 'rb') as input_file:
+            input_data = input_file.read()
 
-# Algorithm for X3 with 24-bit blocks
-def extract_X3(data):
-    global X3  # Declare X3 as global
+        # Step 1: Find Pythagorean triples within a certain limit (2^24)
+        limit = 12  # Adjust the limit as needed
+        triples = find_pythagorean_triples(limit)
 
-    extracted_data = b""
-    i = 0
+        # Step 2: Convert Pythagorean triples to binary data
+        binary_data = triples_to_binary(triples)
 
-    while i < len(data):
-        bit = data[i]
-        i += 1
-        count = data[i]
-        i += 1
+        # Step 3: Append binary data to the original input data
+        input_data += binary_data
 
-        extracted_data += bytes([bit]) * count
+        # Step 4: Compress the combined data using Paq
+        paq_compressed_data = paq.compress(input_data)
 
-        X3 += 1
+        # Save the Paq compressed data to the specified file in binary mode ('wb')
+        with open(output_file_name, 'wb') as compressed_file:
+            compressed_file.write(paq_compressed_data)
 
-        if X3 == 2**24:  # Check if X3 reaches the maximum value
-            X3 = 0
+        print(f"Data successfully compressed and saved to '{output_file_name}'.")
+    except FileNotFoundError:
+        print(f"Error: File not found.")
 
-    return extracted_data
+elif option == "2":
+    # Extraction and Save
+    input_file_name = input("Enter the name of the input compressed file for extraction: ")
+    input_file_name_long = len(input_file_name)
+    if input_file_name[input_file_name_long - 4:] != ".bin":
+        print("Sorry, This is not a binary file!")
+    else:
+        output_file_name = input_file_name[:input_file_name_long - 4]
 
-user_option = input("Choose an option: (1) Compress (2) Extract: ")
+    try:
+        with open(input_file_name, 'rb') as input_file:
+            paq_compressed_data = input_file.read()
 
-if user_option == '1':
-    user_file_name = input("Enter the binary data file you want to compress: ")
+        # Step 1: Decompress the Paq compressed data
+        decompressed_data = paq.decompress(paq_compressed_data)
 
-    with open(user_file_name, 'rb') as file:
-        data = file.read()
+        # The rest of your existing code remains unchanged for finding triples and processing binary data.
 
-    compressed_data = compress_X1_X3(data)
+        # Step 3: Find binary data that represents Pythagorean triples
+        binary_data = decompressed_data[-(len(triples) * 1):]  # Assuming each triple is 3 bytes
 
-    if compressed_data is not None:
-        compressed_file_name = input("Enter the name of the compressed file: ")
+        # Step 4: Convert binary data back to Pythagorean triples
+        extracted_triples = binary_to_triples(binary_data)
 
-        compressed_data = paq.compress(compressed_data)
+        # Save the extracted Pythagorean triples as a binary file
+        with open(output_file_name, 'wb') as extracted_file:
+            for triple in extracted_triples:
+                extracted_file.write(bytes(triple))
 
-        with open(f'{compressed_file_name}.compressed', 'wb') as compressed_file:
-            compressed_file.write(compressed_data)
+        print(f"Data successfully extracted and saved to '{output_file_name}'.")
+    except FileNotFoundError:
+        print(f"Error: File not found.")
 
-elif user_option == '2':
-    user_file_name = input("Enter the name of the compressed file you want to extract: ")
-
-    with open(user_file_name, 'rb') as file:
-        compressed_data = file.read()
-
-    decompressed_data = paq.decompress(compressed_data)
-
-    extracted_data = extract_X3(decompressed_data)
-
-    if extracted_data is not None:
-        extracted_file_name = input("Enter the name of the extracted file: ")
-
-        with open(f'{extracted_file_name}.extracted', 'wb') as extracted_file:
-            extracted_file.write(extracted_data)
-
-if saved_X1 is not None and saved_X2 is not None:
-    print(f"Saved X1: {saved_X1}, Saved X2: {saved_X2}")
+else:
+    print("Invalid option. Please select 1 for Compression and Save or 2 for Extraction and Save.")
