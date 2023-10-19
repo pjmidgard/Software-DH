@@ -114,7 +114,7 @@ elif option == "2":
         decompressed_data = reverse_bits(decompressed_data)
 
         # Set the limit for finding Pythagorean triples to 7
-        limit = 7  # Adjust the limit as needed
+        limit = 256  # Adjust the limit as needed
 
         # Step 3: Find binary data that represents Pythagorean triples
         binary_data = decompressed_data[-(len(triples) * 3):]  # Assuming each triple is 3 bytes
