@@ -1,3 +1,4 @@
+#Author Jurijus Pacalovas 
 import paq
 
 # Function to reverse specific bit patterns during compression and extraction
