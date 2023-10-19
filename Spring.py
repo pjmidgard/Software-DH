@@ -1,417 +1,149 @@
-import os  
-from time import time
-import binascii
-import math
-import os.path
-long_1=0
-name=""
-add_bits=""
-Make_togher=""
-name_input = input("c,  compress or e, extract? ")
-#@Author Jurijus Pacalovas
-class compression:
-        def cryptograpy_compression4(self):
-                self.name = "Written: Jurijus pacalovas"
-                if name_input!="c" and name_input!="e":
-                        print("The wrong letter")
-                        raise SystemExit
-                if name_input=="c" or name_input=="e":        
-                    if name_input=="c":
-                        i=1
-                    if name_input=="e":
-                        i=2
-                    Clear=""
-                    name = input("What is name of file?")
-                    if i==2:
-                        key = input("Please,Enter key")
-                    if os.path.exists(name):
-                            print('Path is exists!')
-                    else:
-                            print('Path is not exists!')
-                            raise SystemExit
-                    x=0
-                    C1=1
-                    x1=0
-                    x2=0
-                    x3=0
-                    X2=0
-                    C1=0
-                    C2=0
-                    C3=0
-                    C4=0
-                    C5=0
-                    Number_of_the_file1=""
-                    n=0
-                    x = time()
+import paq
+
+# Function to reverse bits from "000000000" to "111000011" and vice versa
+def reverse_bits(data):
+    reversed_data = data.replace(b'000000000', b'111000011')
+    reversed_data = reversed_data.replace(b'111000011', b'000000000')
+    return reversed_data
+
+# Function to find Pythagorean triples
+def find_pythagorean_triples(limit):
+    d = 2
+    e = 2
+    f = 1
+    g = 1
+    triples = []
+    for a in range(1, limit - f):
+        for b in range(a, limit + g):
+            c = (a ** d + b ** e)
+            f += 1
+            g += 1
+            d += 1
+            e += 1
+            if isinstance(c, float) and c.is_integer():
+                triples.append((a, b, int(c)))
+    return triples
+
+# Function to convert Pythagorean triples to binary data
+def triples_to_binary(triples):
+    binary_data = b''
+    for triple in triples:
+        for component in triple:
+            if 0 <= component <= 7:
+                binary_data += bytes([component])
+            else:
+                raise ValueError("Triple component out of valid byte range (0-255)")
+    return binary_data
+
+# Function to convert binary data to Pythagorean triples
+def binary_to_triples(binary_data):
+    triples = []
+    current_triple = []
+
+    for value in binary_data:
+        current_triple.append(value)
+        if len(current_triple) == 1:
+            triples.append(tuple(current_triple))
+            current_triple = []
+
+    return triples
+
+# Initialize the 'triples' variable to an empty list
+triples = []
+
+# Initialize X1, X2, and X3
+X1 = 0
+X2 = 0
+X3 = 0
+
+# Ask the user for options
+print("Options:")
+print("1. Compression and Save")
+print("2. Extraction and Save")
+option = input("Select an option (1 or 2): ")
+
+if option == "1":
+    # Increment X1 and X2 by 1
+    X1 += 1
+    X2 += 1
+
+    # Check if X1 is equal to 2^23
+    if X1 == 2**23:
+        print("X1 is equal to 2^23.")
+
+    # Compression and Save
+    input_file_name = input("Enter the name of the input file for compression: ")
+    output_file_name = input_file_name + ".bin"
+
+    try:
+        with open(input_file_name, 'rb') as input_file:
+            input_data = input_file.read()
+
+        # Reverse the first 512 bits
+        input_data = reverse_bits(input_data)
+
+        # Step 1: Find Pythagorean triples within a certain limit (2^24)
+        limit = 12  # Adjust the limit as needed
+        triples = find_pythagorean_triples(limit)
+
+        # Step 2: Convert Pythagorean triples to binary data
+        binary_data = triples_to_binary(triples)
+
+        # Step 3: Append binary data to the original input data
+        input_data += binary_data
+
+        # Step 4: Compress the combined data using Paq
+        paq_compressed_data = paq.compress(input_data)
+
+        # Save the Paq compressed data to the specified file in binary mode ('wb')
+        with open(output_file_name, 'wb') as compressed_file:
+            compressed_file.write(paq_compressed_data)
+
+        print(f"Data successfully compressed and saved to '{output_file_name}'.")
+    except FileNotFoundError:
+        print(f"Error: File not found.")
+
+elif option == "2":
+    # Extraction and Save
+    input_file_name = input("Enter the name of the input compressed file for extraction: ")
+    input_file_name_long = len(input_file_name)
+    if input_file_name[input_file_name_long - 4:] != ".bin":
+        print("Sorry, This is not a binary file!")
+    else:
+        output_file_name = input_file_name[:input_file_name_long - 4]
+
+    try:
+        with open(input_file_name, 'rb') as input_file:
+            paq_compressed_data = input_file.read()
+
+        # Step 1: Decompress the Paq compressed data
+        decompressed_data = paq.decompress(paq_compressed_data)
+
+        # Reverse the first 512 bits
+        decompressed_data = reverse_bits(decompressed_data)
+
+        # Step 3: Find binary data that represents Pythagorean triples
+        binary_data = decompressed_data[-(len(triples) * 1):]  # Assuming each triple is 3 bytes
+
+        # Step 4: Convert binary data back to Pythagorean triples
+        extracted_triples = binary_to_triples(binary_data)
+
+        # Save X3 for extraction
+        X3 += 1
+        x3_output_file_name = "X3_extraction.txt"
+        with open(x3_output_file_name, 'w') as x3_output_file:
+            x3_output_file.write(str(X3))
+
+        # Save the extracted Pythagorean triples as a binary file
+        with open(output_file_name, 'wb') as extracted_file:
+            for triple in extracted_triples:
+                extracted_file.write(bytes(triple))
+
+        print(f"Data successfully extracted and saved to '{output_file_name}'.")
  
-                                if i==1:
-                                    k1=-2
-                                    k2=-1
-                                    X1=1
-                                    Extract1=0
-                                    Multiply=1
-                                    counts=-1
-                                    Add_Numbers=-1
-                                    Times_12=1
-                                    University=-1
-                                    Divide=1  
-                                    SQUEAR_OF_ROOT=-1
-                                    Multiply_Times=0
-                                    while Extract1!=1:
-                                            k1+=1
-                                            k2+=1
-                                            University=int(k2)
-                                            X2=X1
-                                            C11="0"+str(((8*X2)+40))+"b"
-                                            if University>(2**((8*X1)+40)-1):
-                                                    University=0
-                                                    k1=-1
-                                                    k2=0
-                                                    counts=-1
-                                                    X1+=1                                          
-                                            if X1>44739242:
-                                                University=0
-                                                X1=1
-                                                X2=1
-                                            University_file=format(University,C11)
-                                            Divide=int(University_file[0:(X2*8)],2)
-                                            Times_12=int(University_file[(X2*8):(X2*8)+8],2)
-                                            Multiply=int(University_file[(X2*8)+8:(X2*8)+16],2)
-                                            Add_Numbers=int(University_file[(X2*8)+16:(X2*8)+24],2)
-                                            SQUEAR_OF_ROOT=int(University_file[(X2*8)+24:(X2*8)+32],2)
-                                            Multiply_Times=int(University_file[(X2*8)+32:(X2*8)+40],2)
-                                            counts+=1
-                                            if SQUEAR_OF_ROOT>=68719476736:
-                                                SQUEAR_OF_ROOT=0
-                                            if Times_12>=2**26:
-                                                Times_12=1
-                                            if Divide==0:
-                                            	Divide=1
-                                            if Times_12==0:
-                                                Times_12=1 
-                                            if Multiply==0:
-                                                Multiply=1 
-                                            File_information52=""
-                                            File_information53=""
-                                            File_information54=""
-                                            Add_N=""
-                                            File_information52=format(SQUEAR_OF_ROOT,'024b')
-                                            File_information53=format(Multiply,'024b')
-                                            Add_N=format(Add_Numbers,'024b')
-                                            if   File_information6_Times2==0:
-                                                File_information54=format(Multiply_Times,'040b')
-                                                File_information5_2=File_information54
-                                            File_information54=File_information5_2
-                                            File_information53=format(Multiply,'024b')                                            
-                                            File_information5_2=File_information54
-                                            File_information5_17=""
-                                            long_16=len(File_information54)
-                                            add_bits=""
-                                            Clear=""
-                                            INFO10=""
-                                            Translate_info_Decimal=""
-                                            Clear=""
-                                            Number_of_the_file=0
-                                            C=1
-                                            if C==1:
-                                                if   File_information6_Times2==0:
-                                                        long_16=len(File_information54)
-                                                        INFO10=File_information52
-                                                        Deep5 = int(INFO10, 2)
-                                                        long_16=len(File_information54)
-                                                        File_information54=File_information5_2
-                                                        Clear=File_information53
-                                                        Add_N=Add_N
-                                                        T = int(Clear, 2)
-                                                        Add= int(Add_N, 2)
-                                                        long_16=len(File_information54)
-                                                        Times_half_Real=0
-                                                if   File_information6_Times2>0:
-                                                        Translate_info_Decimal_2=0
-                                                if C==1 and Times_12!=0:
-                                                        File_information54=File_information54
-                                                        long_16=len(File_information54)
-                                                        if len (File_information54)!=0:
-                                                            Number_of_the_file=int(File_information54, 2)
-                                                        else:
-                                                            Number_of_the_file=0
-                                                        Hole_Number_information=(2**Deep5)-1
-                                                        Square_of_ROOT=Hole_Number_information
-                                                        Number_of_the_file=((((Number_of_the_file*Square_of_ROOT)+Add_Numbers)//3)*Multiply)//Divide
-                                                        Number_of_the_file1+=Number_of_the_file
-                                                        with open("1", "a") as f2:
-                                                            f2.write(str(Number_of_the_file1))
-                                                        
-                                                        Times_half_Real+=1
-                                                        
 
-                                            File_information5_17=bin(Number_of_the_file)[2:]
-                                            File_information5_2=File_information5_17
-                                            if i==1:
-                                                Make_togher=""
-                                                Make_togher=Clear
-                                                add_bits=""
-                                                if C==1 and Times_12!=0:
-                                                        File_information6_Times2=File_information6_Times2+1
-                                                long_19=len(File_information5_17)
-                                                if  File_information6_Times2==Times_12:
-                                                        File_information6_Times2_1=File_information6_Times2
-                                                        File_information6_Times2=0
-                                                        if int(INFO,2)==Number_of_the_file:  
-                                                               if C==1:
-                                                                       C=1
-                                                if int(INFO,2)==Number_of_the_file and File_information6_Times2_1==Times_12:
-                                                       long_1=len(File_information5_17)
-                                                       Time_Real3=bin(long_12)[2:]
-                                                       T1=len(Time_Real3)
-                                                       Time_Real4=format(T1,'06b')
-                                                       long_file=Time_Real4+Time_Real3
-                                                       Time_Real3=bin(X1)[2:]
-                                                       T1=len(Time_Real3)
-                                                       Time_Real1=bin(T1)[2:]
-                                                       T2=len(Time_Real1)
-                                                       Time_Real4=format(T2,'06b')
-                                                       XN=Time_Real4+Time_Real1+Time_Real3
-                                                       Time_Real3=bin(counts)[2:]
-                                                       T1=len(Time_Real3)
-                                                       Time_Real1=bin(T1)[2:]
-                                                       T2=len(Time_Real1)
-                                                       Time_Real4=format(T2,'06b')
-                                                       Counts=Time_Real4+Time_Real1+Time_Real3
-                                                       if int(INFO,2)==Number_of_the_file and File_information6_Times2_1==Times_12:
-                                                               File_information5_17="01"+XN+Counts+long_file
-                                                               long_1=len(File_information5_17)
-                                                               add_bits=""
-                                                               count_bits=8-long_1%8
-                                                               z=0
-                                                               if count_bits!=0:
-                                                                       while z<count_bits:
-                                                                               add_bits="0"+add_bits
-                                                                               z=z+1
-                                                               File_information5_17=add_bits+File_information5_17
-                                                               Extract1=1
-                                    if Extract1==1:                
-                                            L=len(File_information5_17)
-                                            n = int(File_information5_17, 2)
-                                            width_bits=len(File_information5_17)
-                                            width_bits=(width_bits//8)*2
-                                            width_bits=str(width_bits)
-                                            width_bits="%0"+width_bits+"x"
-                                            width_bits3=binascii.unhexlify(width_bits % n)
-                                            width_bits2=len(width_bits3)
-                                            File_information5_2=Clear
-                                            f1=Number_of_the_file
-                                            f2=Square_of_ROOT
-                                            f3=Add_Numbers//3
-                                            f4=Multiply
-                                            f5=Divide
-                                            f6=f1+f2+f3+f4+f5
-                                            name=name+"/"
-                                            name_2=str(f6)
-                                            ML=len(name_2)
-                                            if ML<10:
-                                                M=str(name_2[:ML])
-                                            else:
-                                                M=name_2[:10]
-                                            print(M)
-                                            with open("1", "w") as f6:
-                                                f6.write(name)
-                                            with open("1", "ab") as f2:
-                                                f2.write(width_bits3)
-                                            x2 = time()
-                                            x3=x2-x
-                                            xs=float(x3)
-                                            xs=str(xs)
-                                            return xs;
+    except FileNotFoundError:
+        print(f"Error: File not found.")
 
-                                if i==2:
-                                    if C==1:
-                                        if   File_information6_Times2==0:
-                                            File_information5="1111111111111111111111111111111111111111111111111111111"
-                                        if   File_information6_Times2==0:
-                                                long_16=len(File_information5)
-                                                ascii_string = ""
-                                                while File_information5[:8]!="00101111":
-                                                    a_binary_string=File_information5[:8]
-                                                    binary_values = a_binary_string. split()
-                                                    for binary_value in binary_values:
-                                                        an_integer = int(binary_value, 2)
-                                                    ascii_character = str(chr(an_integer))
-                                                    ascii_string += ascii_character
-                                                    File_information5=File_information5[8:]
-                                                File_information5=File_information5[8:]
-                                                while File_information5[:1]!="1":
-                                                    if File_information5[:1]=="0":
-                                                        File_information5=File_information5[1:]
-                                                File_information5=File_information5[1:]
-                                                Random_C=int(File_information5[0:6],2)
-                                                File_information5=File_information5[6:]
-                                                Random_C1=int(File_information5[:Random_C],2)
-                                                File_information5=File_information5[Random_C:]
-                                                XR=int(File_information5[:Random_C1],2)
-                                                File_information5=File_information5[Random_C1:]
-                                                Random_C=int(File_information5[0:6],2)
-                                                File_information5=File_information5[6:]
-                                                Random_C1=int(File_information5[:Random_C],2)
-                                                File_information5=File_information5[Random_C:]
-                                                Extract_info=int(File_information5[:Random_C1],2)
-                                                File_information5=File_information5[Random_C1:]
-                                                Random_C=int(File_information5[0:6],2)
-                                                File_information5=File_information5[6:]
-                                                long=int(File_information5[:Random_C],2)
-                                                File_information5=File_information5[Random_C:]                                                      
-                                    k1=-2
-                                    k2=-1
-                                    X1=1
-                                    Extract1=0
-                                    Multiply=1
-                                    Add_Numbers=-1
-                                    Times_12=1
-                                    University=-1
-                                    Divide=1  
-                                    counts=-1
-                                    SQUEAR_OF_ROOT=-1
-                                    Multiply_Times=0
-                                    while Extract1!=1:
-                                            k1+=1
-                                            k2+=1
-                                            University=int(k2)
-                                            X2=X1
-                                            C11="0"+str(((8*X2)+40))+"b"
-                                            if University>(2**((8*X1)+40)-1):
-                                                    University=0
-                                                    k1=-1
-                                                    k2=0
-                                                    counts=-1
-                                                    X1+=1                                          
-                                            if X1>44739242:
-                                                University=0
-                                                X1=1
-                                                X2=1
-                                            University_file=format(University,C11)
-                                            Divide=int(University_file[0:(X2*8)],2)
-                                            Times_12=int(University_file[(X2*8):(X2*8)+8],2)
-                                            Multiply=int(University_file[(X2*8)+8:(X2*8)+16],2)
-                                            Add_Numbers=int(University_file[(X2*8)+16:(X2*8)+24],2)
-                                            SQUEAR_OF_ROOT=int(University_file[(X2*8)+24:(X2*8)+32],2)
-                                            Multiply_Times=int(University_file[(X2*8)+32:(X2*8)+40],2)
-                                            counts+=1
-                                            if SQUEAR_OF_ROOT>=68719476736:
-                                                SQUEAR_OF_ROOT=0
-                                            if Times_12>=2**26:
-                                                Times_12=1
-                                            if Divide==0:
-                                            	Divide=1
-                                            if Times_12==0:
-                                                Times_12=1 
-                                            if Multiply==0:
-                                                Multiply=1 
-                                            File_information52=""
-                                            File_information53=""
-                                            File_information54=""
-                                            Add_N=""
-                                            File_information52=format(SQUEAR_OF_ROOT,'024b')
-                                            File_information53=format(Multiply,'024b')
-                                            Add_N=format(Add_Numbers,'024b')
-                                            if   File_information6_Times2==0:
-                                                File_information54=format(Multiply_Times,'040b')
-                                                File_information5_2=File_information54
-                                            File_information54=File_information5_2
-                                            File_information53=format(Multiply,'024b')                                            
-                                            File_information5_2=File_information54
-                                            File_information5_17=""
-                                            long_16=len(File_information54)
-                                            add_bits=""
-                                            Clear=""
-                                            INFO10=""
-                                            Translate_info_Decimal=""
-                                            Clear=""
-                                            Number_of_the_file=0
-                                            C=1
-                                            if C==1:
-                                                if   File_information6_Times2==0:
-                                                        long_16=len(File_information54)
-                                                        INFO10=File_information52
-                                                        Deep5 = int(INFO10, 2)
-                                                        long_16=len(File_information54)
-                                                        File_information54=File_information5_2
-                                                        Clear=File_information53
-                                                        Add_N=Add_N
-                                                        T = int(Clear, 2)
-                                                        Add= int(Add_N, 2)
-                                                        long_16=len(File_information54)
-                                                        Times_half_Real=0
-                                                if   File_information6_Times2>0:
-                                                        Translate_info_Decimal_2=0
-                                                if C==1 and Times_12!=0:
-                                                        File_information54=File_information54
-                                                        long_16=len(File_information54)
-                                                        if len (File_information54)!=0:
-                                                            Number_of_the_file=int(File_information54, 2)
-                                                        else:
-                                                            Number_of_the_file=0
-                                                        Hole_Number_information=(2**Deep5)-1
-                                                        Square_of_ROOT=Hole_Number_information
-                                                        Number_of_the_file=((((Number_of_the_file*Square_of_ROOT)+Add_Numbers)//3)*Multiply)//Divide
-                                                        Times_half_Real+=1
-                                            File_information5_17=bin(Number_of_the_file)[2:]
-                                            File_information5_2=File_information5_17
-                                            if i==2:
-                                                Make_togher=""
-                                                Make_togher=Clear
-                                                add_bits=""
-                                                if C==1 and Times_12!=0:
-                                                        File_information6_Times2=File_information6_Times2+1
-                                                long_19=len(File_information5_17)
-                                                if  File_information6_Times2==Times_12:
-                                                        File_information6_Times2_1=File_information6_Times2
-                                                        File_information6_Times2=0
-                                                        if int(INFO,2)==Number_of_the_file:  
-                                                               if C==1:
-                                                                       C=1
-                                                if Extract_info==counts and File_information6_Times2_1==Times_12 and X1==XR:
-                                                       long_1=len(File_information5_17)
-                                                       if Extract_info==counts and File_information6_Times2_1==Times_12 and X1==XR:
-                                                               CN="0"+str(long)+"b"
-                                                               File_information5_17=format(Number_of_the_file,CN)
-                                                               Extract1=1
-                                    if Extract1==1:                
-                                            L=len(File_information5_17)
-                                            n = int(File_information5_17, 2)
-                                            width_bits=len(File_information5_17)
-                                            width_bits=(width_bits//8)*2
-                                            width_bits=str(width_bits)
-                                            width_bits="%0"+width_bits+"x"
-                                            width_bits3=binascii.unhexlify(width_bits % n)
-                                            width_bits2=len(width_bits3)
-                                            File_information5_2=Clear
-                                            f1=Number_of_the_file
-                                            f2=Square_of_ROOT
-                                            f3=Add_Numbers//3
-                                            f4=Multiply
-                                            f5=Divide
-                                            f6=f1+f2+f3+f4+f5
-                                            name_3=str(f6)
-                                            ML=len(name_3)
-                                            if ML<10:
-                                                M1=str(name_3[:ML])
-                                            else:
-                                                M1=name_3[:10]
-                                            if M1!=str(name):
-                                                print("file_decrypted")
-                                            else:
-                                                print("file_decrypted")
-                                            if M1!=str(key):
-                                                print("Wrong key")
-                                                raise SystemExit
-
-                                            with open(ascii_string, "wb") as f2:
-                                                f2.write(width_bits3)
-                                            x2 = time()
-                                            x3=x2-x
-                                            xs=float(x3)
-                                            xs=str(xs)
-                                            return xs;
-d=compression()
-xw1=d.cryptograpy_compression4()
-print(xw1)
+else:
+    print("Invalid option. Please select 1 for Compression and Save or 2 for Extraction and Save.")
