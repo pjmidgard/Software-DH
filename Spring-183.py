@@ -1,3 +1,4 @@
+#Author Jurijus Pacalovas 
 import paq
 
 # Function to reverse bits from "000000000" to "111000011" and vice versa
