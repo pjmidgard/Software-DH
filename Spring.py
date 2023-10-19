@@ -32,7 +32,7 @@ def triples_to_binary(triples):
             if 0 <= component <= 255:
                 binary_data += bytes([component])
             else:
-                raise ValueError("Triple component out of valid byte range (0-255)")
+                raise ValueError("Triple component out of the valid byte range (0-255)")
     return binary_data
 
 # Function to convert binary data to Pythagorean triples
@@ -67,7 +67,7 @@ if option == "1":
     X1 += 1
     X3 += 1
 
-    # Check if X1 is equal to 2^23
+    # Check if X1 is equal to 256
     if X1 == 256:
         X2 += 1
 
@@ -94,12 +94,6 @@ if option == "1":
 
         # Step 4: Compress the combined data using Paq
         paq_compressed_data = paq.compress(input_data)
-
-        # Save X1 and X3
-        with open('X1.txt', 'w') as x1_file:
-            x1_file.write(str(X1))
-        with open('X3.txt', 'w') as x3_file:
-            x3_file.write(str(X3))
 
         # Save the Paq compressed data to the specified file in binary mode ('wb')
         with open(output_file_name, 'wb') as compressed_file:
@@ -134,18 +128,12 @@ elif option == "2":
         # Step 4: Convert binary data back to Pythagorean triples
         extracted_triples = binary_to_triples(binary_data)
 
-        # Save X3 for extraction
-        X3 += 1
-        with open('X3.txt', 'w') as x3_file:
-            x3_file.write(str(X3))
+        # Print the extracted triples
+        print("Extracted Pythagorean Triples:")
+        for triple in extracted_triples:
+            print(triple)
 
-        # Save the extracted Pythagorean triples as a binary file
-        with open(output_file_name, 'wb') as extracted_file:
-            for triple in extracted_triples:
-                extracted_file.write(bytes(triple))
-
-        print(f"Data successfully extracted and saved to '{output_file_name}'.")
-
+        print("Data successfully extracted.")
     except FileNotFoundError:
         print(f"Error: File not found.")
 else:
