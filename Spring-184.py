@@ -125,8 +125,8 @@ elif option == "2":
 
         # Print the extracted triples
         print("Extracted Pythagorean Triples:")
-        for triple in extracted_triples:
-            print(triple)
+        #for triple in extracted_triples:
+            #print(triple)
 
         print("Data successfully extracted.")
     except FileNotFoundError:
