@@ -234,6 +234,8 @@ class compression:
                                                             Y2=0
                                                         if Y2==1:
                                                             Y1=Number_of_the_file
+                                                            counts+=1
+                                                            
                                                         
                                                         if Y2==2:
                                                             Y3=Number_of_the_file
@@ -462,6 +464,7 @@ class compression:
                                                             Y2=0
                                                         if Y2==1:
                                                             Y1=Number_of_the_file
+                                                            counts+=1
                                                         
                                                         if Y2==2:
                                                             Y3=Number_of_the_file
