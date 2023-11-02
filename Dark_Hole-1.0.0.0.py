@@ -239,7 +239,7 @@ class compression:
                                                             Y3=Number_of_the_file
                                                         #print(Y1)
                                                         #print(Y3)
-                                                        if Y3>Y1:
+                                                        if Y3>Y1 or Y3<Y1:
                                                             counts+=1
                                                             #print(Y3)
                                                             
@@ -467,7 +467,7 @@ class compression:
                                                             Y3=Number_of_the_file
                                                         #print(Y1)
                                                         #print(Y3)
-                                                        if Y3>Y1:
+                                                        if Y3>Y1 or Y3<Y1:
                                                            
                                                             counts+=1
    
