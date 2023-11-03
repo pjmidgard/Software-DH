@@ -155,10 +155,7 @@ class compression:
                                                     k2=0
                                                     counts=0
                                                     X1+=1                                          
-                                            if X1>44739242:
-                                                University=0
-                                                X1=1
-                                                X2=1
+                                       
                                             University_file=format(University,C11)
                                             
                                             Times_12=int(University_file[(X2*0):(X2*8)+8],2)
@@ -234,7 +231,8 @@ class compression:
                                                             Y2=0
                                                         if Y2==1:
                                                             Y1=Number_of_the_file
-                                                            counts+=1
+                                                           X1+=1
+                                                           
                                                             
                                                         
                                                         if Y2==2:
@@ -386,10 +384,6 @@ class compression:
                                                     k2=0
                                                     counts=0
                                                     X1+=1                                          
-                                            if X1>44739242:
-                                                University=0
-                                                X1=1
-                                                X2=1
                                             University_file=format(University,C11)
                                           
                                             Times_12=int(University_file[(X2*0):(X2*8)+8],2)
@@ -464,7 +458,7 @@ class compression:
                                                             Y2=0
                                                         if Y2==1:
                                                             Y1=Number_of_the_file
-                                                            counts+=1
+                                                            X1+=1
                                                         
                                                         if Y2==2:
                                                             Y3=Number_of_the_file
