@@ -133,7 +133,7 @@ class compression:
                                     k1=-2
                                     k2=-1
                                     X1=1
-                                    X_3=0
+                                    X_3=1
                                     counts=0
                                     Extract1=0
                                     Multiply=1
@@ -328,7 +328,7 @@ class compression:
                                             return xs;
 
                                 if i==2:
-                                    X_3=0
+                                    X_3=1
                                     if C==1:
                                         if   File_information6_Times2==0:
                                             File_information5=INFO
