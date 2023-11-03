@@ -150,7 +150,7 @@ class compression:
                                             University=int(k2)
                                             X2=X1
                                             
-                                            C11="0"+str(((8*X2)+40))+"b"
+                                            C11="0"+str(((8*X_3)+40))+"b"
                                             if University>(2**((8*X1)+40)-1):
                                                     University=0
                                                     k1=-1
@@ -161,7 +161,8 @@ class compression:
                                        
                                             University_file=format(University,C11)
                                             
-                                            Times_12=int(University_file[(X_3*0):(X_3*8)+8],2)
+                                            
+                                            Times_12=int(University_file[0:(X_3*8)+8],2)
                                             Multiply=int(University_file[(X_3*8)+8:(X_3*8)+16],2)
                                             Add_Numbers=int(University_file[(X_3*8)+16:(X_3*8)+24],2)
                                             SQUEAR_OF_ROOT=int(University_file[(X_3*8)+24:(X_3*8)+32],2)
@@ -381,7 +382,7 @@ class compression:
                                             k2+=1
                                             University=int(k2)
                                             X2=X1
-                                            C11="0"+str(((8*X2)+40))+"b"
+                                            C11="0"+str(((8*X_3)+40))+"b"
                                             if University>(2**((8*X1)+40)-1):
                                                     University=0
                                                     k1=-1
