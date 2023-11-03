@@ -133,6 +133,7 @@ class compression:
                                     k1=-2
                                     k2=-1
                                     X1=1
+                                    X_3=0
                                     counts=0
                                     Extract1=0
                                     Multiply=1
@@ -148,21 +149,23 @@ class compression:
                                             k2+=1
                                             University=int(k2)
                                             X2=X1
+                                            
                                             C11="0"+str(((8*X2)+40))+"b"
                                             if University>(2**((8*X1)+40)-1):
                                                     University=0
                                                     k1=-1
                                                     k2=0
                                                     counts=0
-                                                    X1+=1                                          
+                                                    X1+=1
+                                                    X_3+=1                                         
                                        
                                             University_file=format(University,C11)
                                             
-                                            Times_12=int(University_file[(X2*0):(X2*8)+8],2)
-                                            Multiply=int(University_file[(X2*8)+8:(X2*8)+16],2)
-                                            Add_Numbers=int(University_file[(X2*8)+16:(X2*8)+24],2)
-                                            SQUEAR_OF_ROOT=int(University_file[(X2*8)+24:(X2*8)+32],2)
-                                            Multiply_Times=int(University_file[(X2*8)+32:(X2*8)+40],2)
+                                            Times_12=int(University_file[(X_3*0):(X_3*8)+8],2)
+                                            Multiply=int(University_file[(X_3*8)+8:(X_3*8)+16],2)
+                                            Add_Numbers=int(University_file[(X_3*8)+16:(X_3*8)+24],2)
+                                            SQUEAR_OF_ROOT=int(University_file[(X_3*8)+24:(X_3*8)+32],2)
+                                            Multiply_Times=int(University_file[(X_3*8)+32:(X_3*8)+40],2)
                                          
 
                                                             
@@ -325,6 +328,7 @@ class compression:
                                             return xs;
 
                                 if i==2:
+                                    X_3=0
                                     if C==1:
                                         if   File_information6_Times2==0:
                                             File_information5=INFO
@@ -383,14 +387,15 @@ class compression:
                                                     k1=-1
                                                     k2=0
                                                     counts=0
-                                                    X1+=1                                          
+                                                    X1+=1
+                                                    X_3+=1                                      
                                             University_file=format(University,C11)
                                           
-                                            Times_12=int(University_file[(X2*0):(X2*8)+8],2)
-                                            Multiply=int(University_file[(X2*8)+8:(X2*8)+16],2)
-                                            Add_Numbers=int(University_file[(X2*8)+16:(X2*8)+24],2)
-                                            SQUEAR_OF_ROOT=int(University_file[(X2*8)+24:(X2*8)+32],2)
-                                            Multiply_Times=int(University_file[(X2*8)+32:(X2*8)+40],2)
+                                            Times_12=int(University_file[(X_3*0):(X_3*8)+8],2)
+                                            Multiply=int(University_file[(X_3*8)+8:(X_3*8)+16],2)
+                                            Add_Numbers=int(University_file[(X_3*8)+16:(X_3*8)+24],2)
+                                            SQUEAR_OF_ROOT=int(University_file[(X_3*8)+24:(X_3*8)+32],2)
+                                            Multiply_Times=int(University_file[(X_3*8)+32:(X_3*8)+40],2)
                                             
                                             
                                     
