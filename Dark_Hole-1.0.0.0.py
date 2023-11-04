@@ -226,26 +226,12 @@ class compression:
                                                             Number_of_the_file=0
                                                         Hole_Number_information=(2**Deep5)-1
                                                         Square_of_ROOT=Hole_Number_information
+                                                        Before_X=Number_of_the_file
                                                         Number_of_the_file=((((Number_of_the_file*Square_of_ROOT)+Add_Numbers)//3)*Multiply)
-                                                     
-                                                        
-                                                        Y2+=1
-                                                        #print(Y2)
-                                                        if Y2==3:
-                                                            Y2=0
-                                                        if Y2==1:
-                                                            Y1=Number_of_the_file
-                                                            X1+=1
-                                                            counts=0
-                                                            
-                                                        
-                                                        if Y2==2:
-                                                            Y3=Number_of_the_file
-                                                        #print(Y1)
-                                                        #print(Y3)
-                                                        if Y3>Y1:
+                                                        if Number_of_the_file == Before_X:
+                                                            counts=counts
+                                                        else:
                                                             counts+=1
-                                                            #print(Y3)
                                                             
                                                              
                                                         Times_half_Real+=1
@@ -456,24 +442,15 @@ class compression:
                                                             Number_of_the_file=0
                                                         Hole_Number_information=(2**Deep5)-1
                                                         Square_of_ROOT=Hole_Number_information
+                                                        Before_X=Number_of_the_file
                                                         Number_of_the_file=((((Number_of_the_file*Square_of_ROOT)+Add_Numbers)//3)*Multiply)
-                                                       
-                                                        Y2+=1
-                                                        #print(Y2)
-                                                        if Y2==3:
-                                                            Y2=0
-                                                        if Y2==1:
-                                                            Y1=Number_of_the_file
-                                                            X1+=1
-                                                            counts=0
-                                                        
-                                                        if Y2==2:
-                                                            Y3=Number_of_the_file
-                                                        #print(Y1)
-                                                        #print(Y3)
-                                                        if Y3>Y1:
-                                                           
+                                                        if Number_of_the_file == Before_X:
+                                                            counts=counts
+                                                        else:
                                                             counts+=1
+                                                            
+                                                       
+
    
                                                         Times_half_Real+=1
                                             File_information5_17=bin(Number_of_the_file)[2:]
