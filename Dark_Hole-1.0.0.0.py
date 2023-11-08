@@ -178,7 +178,7 @@ class compression:
                                             Times_12=int(University_file[0:(X_3*8)+8],2)
                                             Multiply=int(University_file[(X_3*8)+8:(X_3*8)+16],2)
                                             Add_Numbers=int(University_file[(X_3*8)+16:(X_3*8)+24],2)
-                                            SQUEAR_OF_ROOT=int(University_file[(X_3*8)+24:(X_3*8)+32],2)
+                                            Square_of_ROOT=int(University_file[(X_3*8)+24:(X_3*8)+32],2)
                                             Multiply_Times=int(University_file[(X_3*8)+32:(X_3*8)+40],2)
                                          
 
@@ -389,7 +389,7 @@ class compression:
                                             Times_12=int(University_file[(X_3*0):(X_3*8)+8],2)
                                             Multiply=int(University_file[(X_3*8)+8:(X_3*8)+16],2)
                                             Add_Numbers=int(University_file[(X_3*8)+16:(X_3*8)+24],2)
-                                            SQUEAR_OF_ROOT=int(University_file[(X_3*8)+24:(X_3*8)+32],2)
+                                            Square_of_ROOT=int(University_file[(X_3*8)+24:(X_3*8)+32],2)
                                             Multiply_Times=int(University_file[(X_3*8)+32:(X_3*8)+40],2)
                                             
                                             
