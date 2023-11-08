@@ -11,6 +11,19 @@ name_input = input("c,  compress or e, extract? ")
 #@Author Jurijus Pacalovas
 class compression:
         def cryptograpy_compression4(self):
+
+                def process_files(Number_of_the_file, Hole_Number_information, Add_Numbers, Multiply, counts):
+                    Before_X = Number_of_the_file
+                    Square_of_ROOT = Hole_Number_information
+                    Number_of_the_file = ((((Number_of_the_file * Square_of_ROOT) + Add_Numbers) // 3) * Multiply)
+                    
+                    if Number_of_the_file == Before_X:
+                        counts=counts
+                    else:
+                        counts+=1
+            
+                    return Number_of_the_file, Square_of_ROOT, Add_Numbers, Multiply, counts
+                    
                 self.name = "Written: Jurijus pacalovas"
                 if name_input!="c" and name_input!="e":
                         print("The wrong letter")
@@ -226,14 +239,9 @@ class compression:
                                                             Number_of_the_file=0
                                                         Hole_Number_information=(2**Deep5)-1
                                                         Square_of_ROOT=Hole_Number_information
-                                                        Before_X=Number_of_the_file
-                                                        Number_of_the_file=((((Number_of_the_file*Square_of_ROOT)+Add_Numbers)//3)*Multiply)
-                                                        if Number_of_the_file == Before_X:
-                                                            counts=counts
-                                                        else:
-                                                            counts+=1
-                                                            
-                                                             
+                                                        
+                                                        Number_of_the_file, Hole_Number_information, Add_Numbers, Multiply, counts = process_files(Number_of_the_file, Hole_Number_information, Add_Numbers, Multiply, counts)
+                                                        
                                                         Times_half_Real+=1
                                             File_information5_17=bin(Number_of_the_file)[2:]
                                             File_information5_2=File_information5_17
@@ -442,15 +450,8 @@ class compression:
                                                             Number_of_the_file=0
                                                         Hole_Number_information=(2**Deep5)-1
                                                         Square_of_ROOT=Hole_Number_information
-                                                        Before_X=Number_of_the_file
-                                                        Number_of_the_file=((((Number_of_the_file*Square_of_ROOT)+Add_Numbers)//3)*Multiply)
-                                                        if Number_of_the_file == Before_X:
-                                                            counts=counts
-                                                        else:
-                                                            counts+=1
-                                                            
-                                                       
 
+                                                        Number_of_the_file, Hole_Number_information, Add_Numbers, Multiply, counts = process_files(Number_of_the_file, Hole_Number_information, Add_Numbers, Multiply, counts)
    
                                                         Times_half_Real+=1
                                             File_information5_17=bin(Number_of_the_file)[2:]
