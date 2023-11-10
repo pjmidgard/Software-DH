@@ -128,7 +128,7 @@ class compression:
                                 if i==1:
                                     from qiskit.circuit import QuantumCircuit
                                     circuit = QuantumCircuit(2**805306370)
-                                    circuit1 = QuantumCircuit(44739244) 
+                                    
                                     k1=-2
                                     k2=-1
                                     k3=-2
@@ -150,7 +150,7 @@ class compression:
                                                 k1=-1
                                                 k2=0
                                             circuit.cp(University, k1, k2)
-                                            circuit1.cp(University, k3, k4)   
+                                         
                                             University=int(k2)
                                             X1=int(k4)
                                             X2=X1
@@ -161,12 +161,7 @@ class compression:
                                                     k2=0
                                                     counts=-1
                                                     X1+=1                                          
-                                            if X1>44739242:
-                                                University=0
-                                                X1=1
-                                                X2=1
-                                                k3=-2
-                                                k4=-1                                                                          
+                                                                                                                      
                                             University_file=format(University,C11)
                                             Divide=int(University_file[0:(X2*8)],2)
                                             Times_12=int(University_file[(X2*8):(X2*8)+8],2)
@@ -351,7 +346,7 @@ class compression:
                                                 File_information5=File_information5[Random_C:]                                                      
                                     from qiskit.circuit import QuantumCircuit
                                     circuit = QuantumCircuit(2**805306370)
-                                    circuit1 = QuantumCircuit(44739244) 
+                                    
                                     k1=-2
                                     k2=-1
                                     k3=-2
@@ -373,7 +368,7 @@ class compression:
                                                 k1=-1
                                                 k2=0
                                             circuit.cp(University, k1, k2)
-                                            circuit1.cp(University, k3, k4)   
+                                             
                                             University=int(k2)
                                             X1=int(k4)
                                             X2=X1
@@ -384,12 +379,7 @@ class compression:
                                                     k2=0
                                                     counts=-1
                                                     X1+=1                                          
-                                            if X1>44739242:
-                                                University=0
-                                                X1=1
-                                                X2=1
-                                                k3=-2
-                                                k4=-1
+                                            
                                             University_file=format(University,C11)
                                             Divide=int(University_file[0:(X2*8)],2)
                                             Times_12=int(University_file[(X2*8):(X2*8)+8],2)
