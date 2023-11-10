@@ -144,8 +144,8 @@ class compression:
                                              
                                             k1=-2
                                             k2=-1
-                                            k3=-2
-                                            k4=-1
+                                
+                                            
                                             X1=1
                                             Extract1=0
                                             Multiply=1
@@ -362,8 +362,8 @@ class compression:
                                              
                                             k1=-2
                                             k2=-1
-                                            k3=-2
-                                            k4=-1
+                        
+                                        
                                             X1=1
                                             Extract1=0
                                             Multiply=1
