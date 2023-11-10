@@ -21,4 +21,4 @@ Portal created by Jurijus Pacalovas
 
 Compression Crated by Jurijus Pacalovas
 
-I created Dark_Hole Quantum Software.
+I have created Dark_Hole Quantum Software.
