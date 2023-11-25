@@ -201,6 +201,7 @@ class compression:
                                 size_datat=size_data2
                                 size_data3=size_data2
                                 size_after3=len(size_datat)
+                                #print(size_after3)
                                 block=0
                                 size_data5=""
                               
@@ -234,11 +235,12 @@ class compression:
                                             div = "0" + div
                                 
                                         long_divide1 = div
+                                        #print(len(long_divide1))
                                         div = ""
                                         times += 1
                                     
-                                        block += 8
-                                        size_data5 += long_divide1
+                                    block += 8
+                                    size_data5 += long_divide1
                                 
               
                                                                         #print(size_data5)
@@ -269,8 +271,8 @@ class compression:
                                         
                                         
                                 data2=jl
-                                import paq
-                                jl=paq.compress(jl)
+                                #import paq
+                                #jl=paq.compress(jl)
                                         
                                 size_after=len(jl)
     
@@ -483,6 +485,7 @@ class compression:
                                 size_datat=size_data2
                                 size_data3=size_data2
                                 size_after3=len(size_datat)
+                                #print(size_after3)
                                 block=0
                                 size_data5=""
                               
@@ -506,31 +509,31 @@ class compression:
                                     while find!=1:
                                         long_divide_find_v+=1
                                         long_divide_find=format(long_divide_find_v, "08b")
-                                        print(long_divide_find)
-                                        if long_divide1==long_divide:
+                                        #print(long_divide_find)
+                                        if long_divide1==long_divide_find:
                                             find=1
-                                    if n == 5:
-                                        n = a       
-                                    while times != 5 + n:
-                                        long_divide_int = int(long_divide1, 2)
-                                
-                                        if long_divide_int % 2 == 0:
-                                            long_divide_int = long_divide_int // 2
-                                            c = "0" + str(7) + "b"
-                                            div = format(long_divide_int, c)
-                                            div = "1" + div
-                                        elif long_divide_int % 2 == 1:
-                                            long_divide_int = long_divide_int // 2
-                                            c = "0" + str(7) + "b"
-                                            div = format(long_divide_int, c)
-                                            div = "0" + div
-                                
-                                        long_divide1 = div
-                                        div = ""
-                                        times += 1
+                                        if n == 5:
+                                            n = a       
+                                        while times != 5 + n:
+                                            long_divide_int = int(long_divide1, 2)
                                     
-                                        block += 8
-                                        size_data5 += long_divide_find
+                                            if long_divide_int % 2 == 0:
+                                                long_divide_int = long_divide_int // 2
+                                                c = "0" + str(7) + "b"
+                                                div = format(long_divide_int, c)
+                                                div = "1" + div
+                                            elif long_divide_int % 2 == 1:
+                                                long_divide_int = long_divide_int // 2
+                                                c = "0" + str(7) + "b"
+                                                div = format(long_divide_int, c)
+                                                div = "0" + div
+                                    
+                                            long_divide1 = div
+                                            div = ""
+                                            times += 1
+                                    
+                                    block += 8
+                                    size_data5 += long_divide_find
               
                                                                         #print(size_data5)
                                                                     
