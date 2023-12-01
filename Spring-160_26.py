@@ -34,8 +34,7 @@ class compression:
                         i=2
                     Clear=""
                     name = input("What is name of file?")
-                    if i==2:
-                        key = input("Please,Enter key")
+                    
                     if os.path.exists(name):
                             print('Path is exists!')
                     else:
@@ -483,8 +482,7 @@ class compression:
                                                 print("file_decrypted")
                                             else:
                                                 print("file_decrypted")
-                                            if M1!=str(key):
-                                                print("Wrong key")
+                                          
                                                 
 
                                             with open(ascii_string, "wb") as f2:
