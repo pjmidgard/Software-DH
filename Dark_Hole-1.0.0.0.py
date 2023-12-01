@@ -139,8 +139,8 @@ class compression:
                                                 print("print file is too big!")
                                                 raise SystemExit
                                         if i==1:
-                                            from qiskit.circuit import QuantumCircuit
-                                            circuit = QuantumCircuit(2**805306370)
+                                            #from qiskit.circuit import QuantumCircuit
+                                            #circuit = QuantumCircuit(2**805306370)
                                              
                                             k1=-2
                                             k2=-1
@@ -159,13 +159,13 @@ class compression:
                                             while Extract1!=1:
                                                     k1+=1
                                                     k2+=1
-                                                    if k1==2**805306369:
-                                                        k1=-1
-                                                        k2=0
-                                                    circuit.cp(University, k1, k2)
+                                                    #if k1==2**805306369:
+                                                        #k1=-1
+                                                        #k2=0
+                                                    #circuit.cp(University, k1, k2)
                                                  
                                                     University=int(k2)
-                                                    X1=int(k4)
+                                                    X1=int(k2)
                                                     X2=X1
                                                     C11="0"+str(((8*X2)+40))+"b"
                                                     if University>(2**((8*X1)+40)-1):
@@ -357,8 +357,8 @@ class compression:
                                                         File_information5=File_information5[6:]
                                                         long=int(File_information5[:Random_C],2)
                                                         File_information5=File_information5[Random_C:]                                                      
-                                            from qiskit.circuit import QuantumCircuit
-                                            circuit = QuantumCircuit(2**805306370)
+                                            #from qiskit.circuit import QuantumCircuit
+                                            #circuit = QuantumCircuit(2**805306370)
                                              
                                             k1=-2
                                             k2=-1
@@ -377,13 +377,13 @@ class compression:
                                             while Extract1!=1:
                                                     k1+=1
                                                     k2+=1
-                                                    if k1==2**805306369:
-                                                        k1=-1
-                                                        k2=0
+                                                    #if k1==2**805306369:
+                                                        #k1=-1
+                                                        #k2=0
                                                     circuit.cp(University, k1, k2)
                                                      
                                                     University=int(k2)
-                                                    X1=int(k4)
+                                                    X1=int(k2)
                                                     X2=X1
                                                     C11="0"+str(((8*X2)+40))+"b"
                                                     if University>(2**((8*X1)+40)-1):
