@@ -509,7 +509,7 @@ class compression:
         
                                                     if M1!=str(key):
                                                         print("Wrong key")
-                                                        raise SystemExit
+                                                        
                                                     with open(ascii_string, "wb") as f2:
                                                         f2.write(width_bits3)
                                                     x2 = time()
