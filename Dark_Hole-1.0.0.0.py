@@ -381,7 +381,7 @@ class compression:
                                                         k1=-1
                                                         k2=0
                                                     circuit.cp(University, k1, k2)
-                                                    circuit1.cp(University, k3, k4)   
+                                                     
                                                     University=int(k2)
                                                     X1=int(k4)
                                                     X2=X1
