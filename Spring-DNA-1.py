@@ -80,6 +80,7 @@ class compression:
                     name_of_file=len(name_1)
 
                     name_1=name
+                  
 
                     
 
@@ -165,7 +166,8 @@ class compression:
                        # Read the whole file at once
 
                         data = binary_file.read()
-
+                        
+                       
                         s=str(data)
 
                        
@@ -214,8 +216,11 @@ class compression:
                                     # 256 range data to binary
                                     bits_long="0"+str(long1*8)+"b"
 
+
+
                                     b=int(binascii.hexlify(data),16)
                                     INFO=format(b,bits_long)
+                                    
                                     ####################                                   
                                     INFO_OR_DATA_TO_BINARY=INFO
                                     FF=INFO
@@ -243,49 +248,92 @@ class compression:
                                 INFO_add=""
                                 INFO8=""
                                 long_file=len(INFO4)
-                                E=0
+                                E=-1
                                 #print(long_file)
                                 while block<long_file:
                                     INFO=INFO4[block:block+3]
                                     INFO8=""
                                     #01,100,101,110,111,11,000 0-3 2 1,0 E
                                     
-                                      
-                                        
+                              
+                                    
+                                
+                                    E+=1
                                        
-                                    if INFO=="001":
-                                        INFO1="011"
+                                    if INFO[:2]=="01" and E%3==0:
+                                        INFO1="00"
+                                        block+=2
+                                        INFO2="000"
                                         #print(INFO)
-                                        block+=3
+                                        
 
                                     
                                     
-                                    elif INFO=="011":
+                                    elif INFO[:2]=="00" and E%3==0:
+                                       
+                                        
+                                        INFO1="01"
+                                        block+=2
+                                        INFO2="0"
+                                    
+                                    elif INFO[:3]=="001" and E%3>=1:
+                                        INFO1="000"
+                                        block+=3
+                                        INFO2="000"
+                                        #print(INFO)
+                                        
+
+                                    
+                                    
+                                    elif INFO[:3]=="000" and E%3>=1:
                                        
                                         
                                         INFO1="001"
-                                    
                                         block+=3
-                                        
-                                        
+                                        INFO2="0"
                                     
-                                    else:
+                                    elif INFO[:3]=="010" and E%3>=1:
+                                        INFO1="011"
+                                        block+=3
+                                        INFO2="000"
+                                        #print(INFO)
+                                        
 
+                                    
+                                    
+                                    elif INFO[:3]=="011" and  E%3>=1:
+                                       
+                                        
+                                        INFO1="010"
+                                        block+=3
+                                        INFO2="0"
+                                           
+                                    else:
+                                       
+                                        if E%3==0:
                                         
                                             INFO1=INFO[:1]
-                                    
                                             block+=1
-                        
-                                    
-                                   
+                                            INFO2="0"
+                                        elif E%3==1:
                                         
-                                       
-                                 
+                                            INFO1=INFO[:3]
+                                            block+=3
+                                            INFO2="0"                                                                                                                                                                          
+                                        else:
+                                                                                    
+                                            INFO1=INFO[:2]
+                                            block+=2#
+                                            INFO2="0"                                    
                                     #print(block)
+                                  
                                     INFO_add+=INFO1
+                                  
+                                     
+                                    
                                    
                                     
-                                    #print(INFO_add)                        
+                                                      
 
                                 count_N+=1
                                # print(count_N)
@@ -339,6 +387,10 @@ class compression:
                                         binary_to_data_2=len(jl)
 
                                         data=jl
+                                     
+                                       
+                                                                         
+                                       
 
                                        
 
@@ -357,7 +409,10 @@ class compression:
                                                 times_numbers_reapits=10
 
                                                 if times_numbers_reapits==10:
+                                                
                                                     with open(name, "wb") as binary_file:
+                                                        
+                                                        
 
                                                     
 
@@ -389,3 +444,5 @@ xw=d.cryptograpy_reverse()
 
 print(xw)
 
+
+Sent from Yahoo Mail on Android
